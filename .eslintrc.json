@@ -1,0 +1,22 @@
+/*
+npm i --save-dev eslint-config-prettier
+npm i --save-dev eslint-config-airbnb-base
+npm i --save-dev eslint-plugin-import
+*/
+
+{
+  "extends": ["airbnb-base", "prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unexpected-multiline": "error",
+    "indent": "off",
+    "quotes": [2, "single", "avoid-escape"],
+    "ignoreTemplateLiterals": true,
+    "padded-blocks": ["error", "never"]
+  },
+  "plugins": ["prettier"]
+}
