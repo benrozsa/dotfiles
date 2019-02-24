@@ -1,14 +1,14 @@
-/*
-npm i --save-dev eslint-config-prettier
-npm i --save-dev eslint-config-airbnb-base
-npm i --save-dev eslint-plugin-import
-npm i --save-dev eslint-plugin-prettier
-npm i --save-dev prettier
-*/
-
 {
   "extends": ["airbnb-base", "prettier"],
   "parser": "babel-eslint",
+  "env": {
+    "node": false,
+    "browser": true
+  },
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
   "parserOptions": {
     "ecmaVersion": 2017
   },
@@ -18,7 +18,11 @@ npm i --save-dev prettier
     "indent": "off",
     "quotes": [2, "single", "avoid-escape"],
     "ignoreTemplateLiterals": true,
-    "padded-blocks": ["error", "never"]
+    "padded-blocks": ["error", "never"],
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/jsx-closing-bracket-location": [1, "after-props"],
+    "react/react-in-jsx-scope": 2
   },
-  "plugins": ["prettier"]
+  "plugins": ["react", "prettier"]
 }
