@@ -37,15 +37,13 @@ POWERLEVEL9K_CUSTOM_JAVASCRIPT_FOREGROUND="black"
 POWERLEVEL9K_CUSTOM_JAVASCRIPT_BACKGROUND="yellow"
 # Load Nerd Fonts with Powerlevel9k theme for Zsh
 POWERLEVEL9K_MODE='nerdfont-complete'
-source ~/powerlevel9k/powerlevel9k.zsh-theme
+
 
 plugins=(git)
 plugins=(zsh-autosuggestions)
 
+source ~/powerlevel9k/powerlevel9k.zsh-theme
 source $ZSH/oh-my-zsh.sh
 
-alias zshconfig="vi ~/.zshrc"
-alias ohmyzsh="vi ~/.oh-my-zsh"
 alias ll="ls -oa"
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
