@@ -18,8 +18,8 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/rozsabence/.oh-my-zsh"
 
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
 
 plugins=(
   git 
