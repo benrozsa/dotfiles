@@ -1,6 +1,7 @@
 set number
 set background=dark
 
+:set backspace=indent,eol,start
 set expandtab
 set textwidth=79
 set tabstop=8
