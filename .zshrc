@@ -25,7 +25,6 @@ plugins=(
   git 
   zsh-syntax-highlighting
   zsh-autosuggestions
-  #zsh-apple-touchbar
 )
 
 source ~/.nvm/nvm.sh
