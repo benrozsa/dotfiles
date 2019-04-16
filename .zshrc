@@ -2,7 +2,7 @@
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export NVM_DIR=~/.nvm
 export ZSH="/Users/rozsabence/.oh-my-zsh"
-export PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+export PATH=/bin:/usr/bin:/usr/local/bin:/usr/sbin:/sbin:${PATH}
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
