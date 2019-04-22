@@ -1,5 +1,8 @@
 # Set environment variables
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export M2_HOME="/usr/local/Cellar/maven/"$(ls "/usr/local/Cellar/maven/")"/libexec"
+export MAVEN_HOME=$M2_HOME
+export M2=$M2_HOME/bin
 export NVM_DIR=~/.nvm
 export ZSH="/Users/rozsabence/.oh-my-zsh"
 export EDITOR="$(command -v vim)"
