@@ -1,27 +1,55 @@
 {
-  "extends": ["airbnb-base", "prettier"],
-  "parser": "babel-eslint",
+  "extends": [
+    "airbnb-base",
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "eslint-config-prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
   "env": {
-    "node": false,
-    "browser": true
-  },
-  "ecmaFeatures": {
+    "browser": true,
+    "node": true,
+    "es6": true,
     "jsx": true,
     "modules": true
   },
   "parserOptions": {
-    "ecmaVersion": 2017
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "legacyDecorators": true,
+      "modules": true
+    }
   },
   "rules": {
     "prettier/prettier": "error",
     "no-unexpected-multiline": "error",
-    "indent": "off",
     "quotes": [2, "single", "avoid-escape"],
     "ignoreTemplateLiterals": true,
     "padded-blocks": ["error", "never"],
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2
+
+    "indent": "off",
+    "no-console": "off",
+    "no-reserved-keys": "off",
+    "no-useless-constructor": "off",
+    "no-empty-function": "off",
+
+
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off"
   },
-  "plugins": ["react", "prettier"]
+  "plugins": ["react", "prettier", "@typescript-eslint"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
 }

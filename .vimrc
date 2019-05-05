@@ -11,6 +11,8 @@ set tabstop=8
 set wrapmargin=8
 set softtabstop=4
 set shiftwidth=4
+set encoding=utf-8
+set completeopt-=preview
 syntax on
 let g:pymode_python = 'python3'
 

@@ -1,5 +1,13 @@
-npm i --save-dev eslint-config-prettier
-npm i --save-dev eslint-config-airbnb-base
-npm i --save-dev eslint-plugin-import
-npm i --save-dev eslint-plugin-prettier
-npm i --save-dev prettier
+#!/usr/bin/env bash
+npm i eslint \
+      babel-eslint \
+      prettier \
+      @typescript-eslint/parser \
+      @typescript-eslint/eslint-plugin \
+      eslint-config-prettier \
+      eslint-config-airbnb-base \
+      eslint-plugin-import \
+      eslint-plugin-react-hooks@next \
+      eslint-plugin-react \
+      eslint-plugin-prettier \
+      eslint-loader -D
