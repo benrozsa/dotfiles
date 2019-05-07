@@ -15,7 +15,7 @@ alias cls='mvn clean install sling:install -Dmaven.test.skip'
 alias clj='mvn clean install -Dmaven.test.skip -Pjooq-generation'
 
 # -- Working Directories --
-alias maps='cd IdeaProjects/maps-reactor/maps-business/'
+alias maps='cd IdeaProjects/maps-business/'
 alias eop='cd com.avon.maps.editoffer.persistence.service'
 alias eoj='cd com.avon.maps.editoffer.persistence.jooq'
 alias eod='cd com.avon.maps.editoffer.domain'
