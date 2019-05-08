@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-npm i eslint \
+npm i typescript \
+      eslint \
       babel-eslint \
       prettier \
       @typescript-eslint/parser \

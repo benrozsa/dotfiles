@@ -1,5 +1,5 @@
 alias zshconfig="vi ~/.zshrc"
-alias bashconfig="vi ~/.bash_aliases"
+alias aliasconfig="vi ~/.bash_aliases"
 alias vimconfig="vi ~/.vimrc"
 alias dfh='df -h | grep "/dev/"'
 alias grep='grep --color=auto'
@@ -15,6 +15,9 @@ alias cls='mvn clean install sling:install -Dmaven.test.skip'
 alias clj='mvn clean install -Dmaven.test.skip -Pjooq-generation'
 
 # -- Working Directories --
+alias ws='cd ~/WebstromProjects'
+alias is='cd ~/Ideaprojects'
+
 alias maps='cd IdeaProjects/maps-business/'
 alias eop='cd com.avon.maps.editoffer.persistence.service'
 alias eoj='cd com.avon.maps.editoffer.persistence.jooq'
