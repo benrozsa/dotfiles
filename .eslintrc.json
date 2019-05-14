@@ -29,13 +29,7 @@
     "quotes": [2, "single", "avoid-escape"],
     "ignoreTemplateLiterals": true,
     "padded-blocks": ["error", "never"],
-
-    "indent": "off",
-    "no-console": "off",
-    "no-reserved-keys": "off",
-    "no-useless-constructor": "off",
-    "no-empty-function": "off",
-
+    "indent": ["error", 2],
 
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-parameter-properties": "off",

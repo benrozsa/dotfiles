@@ -6,6 +6,7 @@ npm i typescript \
       @typescript-eslint/parser \
       @typescript-eslint/eslint-plugin \
       eslint-config-prettier \
+      eslint-config-airbnb \
       eslint-config-airbnb-base \
       eslint-plugin-import \
       eslint-plugin-react-hooks@next \
