@@ -1,10 +1,9 @@
 {
   "extends": [
+    "airbnb-base",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "airbnb-base"
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "env": {
@@ -28,12 +27,12 @@
     "ignoreTemplateLiterals": true,
     "implicit-arrow-linebreak": "off",
     "semi": "off",
-    "indent": "off",
     "@typescript-eslint/semi": ["error"],
+    "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
+
     "@typescript-eslint/interface-name-prefix": ["error", "always"]
   },
-  "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint"],
   "settings": {
     "import/resolver": {
       "node": {
