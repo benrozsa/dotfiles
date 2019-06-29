@@ -1,0 +1,3 @@
+pkill -f "Jitouch"
+sleep 5
+nohup ~/Library/PreferencePanes/Jitouch.prefPane/Contents/Resources/Jitouch.app/Contents/MacOS/Jitouch > /dev/null 2>&1 &
