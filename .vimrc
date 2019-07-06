@@ -1,50 +1,36 @@
+syntax on           " Turn on syntax highlighting, or really
+                    " color coding.
+                    " This really helps you spot broken
+                    " syntax as you type.
+
 set number
 set wildmenu
 set showcmd
 set nocompatible
-set autoindent
-set expandtab
 set background=dark
 set backspace=indent,eol,start
 set textwidth=79
-set tabstop=8
 set wrapmargin=8
-set softtabstop=4
-set shiftwidth=4
 set encoding=utf-8
-set completeopt-=preview
-syntax on
-let g:pymode_python = 'python3'
+" set completeopt-=preview
 
-filetype plugin indent on
+set showmatch       " Show matches for () [] {}
 
-au FileType python noremap <buffer> <F8> :call Autopep8()
-au FileType python setlocal formatprg=autopep8\ -
-let g:pymode = 1
-let g:pymode_rope = 1
+set autoindent      " Copy indent from current line when
+                    " Starting a new line
 
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
 
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
+set shiftwidth=4    " Indents will have a width of 4
 
-" Support virtualenv
-let g:pymode_virtualenv = 0
+set softtabstop=4   " Sets the number of columns for a TAB
 
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = 'b'
+set expandtab       " Expand TABs to spaces
 
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
+set ruler           " Show at which column and row
+                    " the cursor is in characters
 
-" Don't autofold code
-let g:pymode_folding = 1
+set colorcolumn=80
