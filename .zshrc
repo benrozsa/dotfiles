@@ -26,7 +26,7 @@ if [ -f ~/.nevnap ]; then
 fi
 
 # Configure zshell
-ZSH_THEME="robbyrussell"
+ZSH_THEME="spaceship"
 plugins=(
   git 
   zsh-syntax-highlighting
