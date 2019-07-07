@@ -1,0 +1,57 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "prettier.eslintIntegration": true,
+    "files.autoSave": "afterDelay",
+    "git.autoStash": true,
+    "git.fetchOnPull": true,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "workbench.statusBar.feedback.visible": false,
+    "eslint.provideLintTask": true,
+    "eslint.run": "onSave",
+    "explorer.confirmDelete": false,
+    "git.enableSmartCommit": true,
+    "editor.tabSize": 2,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "One Dark Pro",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.triggerExpansionOnTab": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "python.jediEnabled": false,
+    "eslint.autoFixOnSave": true,
+    "terminal.integrated.rendererType": "dom",
+    "eslint.alwaysShowStatus": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.copyOnSelection": true,
+    "editor.smoothScrolling": true,
+    "editor.find.autoFindInSelection": true,
+    "editor.formatOnSave": true,
+    "workbench.tree.indent": 4,
+    "search.showLineNumbers": true
+}
