@@ -40,6 +40,7 @@
     "emmet.showSuggestionsAsSnippets": true,
     "emmet.triggerExpansionOnTab": true,
     "editor.fontFamily": "Fira Code",
+    "editor.fontWeight": "bold",
     "editor.fontLigatures": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
@@ -53,5 +54,8 @@
     "editor.find.autoFindInSelection": true,
     "editor.formatOnSave": true,
     "workbench.tree.indent": 4,
-    "search.showLineNumbers": true
+    "search.showLineNumbers": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

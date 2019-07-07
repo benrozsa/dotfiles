@@ -12,11 +12,11 @@ module.exports = {
     fontSize: 12,
 
     // font family with optional fallbacks
-    // fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-    fontFamily: '"Fira Code"',
+    fontFamily:
+      '"Fira Code", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: 'normal',
+    fontWeight: 'bold',
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',
@@ -149,6 +149,10 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'hyper-atom-dark-transparent',
+    'hyper-statusline',
+    'hyper-dark-scrollbar',
+    'hyper-font-smoothing',
+    'hyper-blink',
   ],
 
   // in development, you can create a directory under
