@@ -30,8 +30,9 @@
     "@typescript-eslint/semi": ["error"],
     "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
-    "@typescript-eslint/interface-name-prefix": ["error", "always"],
-    "@typescript-eslint/prefer-interface": "off"
+    "@typescript-eslint/prefer-interface": "off",
+    "@typescript-eslint/interface-name-prefix": ["error", "never"],
+    "@typescript-eslint/explicit-member-accessibility": "off"
   },
   "settings": {
     "import/resolver": {
