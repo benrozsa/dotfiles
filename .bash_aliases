@@ -3,13 +3,14 @@ alias zshconfig="vi ~/.zshrc"
 alias aliasconfig="vi ~/.bash_aliases"
 alias bashconfig="vi ~/.bash_aliases"
 alias vimconfig="vi ~/.vimrc"
+alias vsconfig="vi ~/Library/Application\ Support/Code/User/settings.json"
 
 # Git
 alias s="git status"
 alias a="git add ."
 alias d="git diff HEAD"
 alias p="git push"
-alias log="git log"
+alias lo="git log"
 
 # Other
 alias dot="cd ~/.dotfiles; git st"

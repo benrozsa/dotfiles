@@ -1,61 +1,59 @@
 {
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 0,
+   
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "vscode-icons",
+
+    "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.copyOnSelection": true,
+    
     "git.confirmSync": false,
     "git.autofetch": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "prettier.eslintIntegration": true,
-    "files.autoSave": "afterDelay",
+    "git.enableSmartCommit": true,
     "git.autoStash": true,
     "git.fetchOnPull": true,
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "workbench.statusBar.feedback.visible": false,
+
     "eslint.provideLintTask": true,
-    "eslint.run": "onSave",
-    "explorer.confirmDelete": false,
-    "git.enableSmartCommit": true,
-    "editor.tabSize": 2,
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "One Dark Pro",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "prettier.singleQuote": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.validate": [
+         "javascript",
+         "javascriptreact",
+         "typescript",
+         "typescriptreact"
+     ],
+
+    "prettier.printWidth": 80, 
+    "prettier.tabWidth": 2, 
     "prettier.trailingComma": "all",
-    "explorer.confirmDragAndDrop": false,
-    "window.zoomLevel": 0,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "prettier.singleQuote": true,
+    "prettier.arrowParens": true, 
+    "prettier.eslintIntegration": true,
+    "prettier.smartEnable": true,
+
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    
     "emmet.showSuggestionsAsSnippets": true,
     "emmet.triggerExpansionOnTab": true,
+    
+    "editor.tabSize": 2,
     "editor.fontFamily": "Fira Code",
     "editor.fontWeight": "bold",
     "editor.fontLigatures": true,
     "editor.formatOnPaste": true,
-    "editor.formatOnType": true,
-    "python.jediEnabled": false,
-    "eslint.autoFixOnSave": true,
-    "terminal.integrated.rendererType": "dom",
-    "eslint.alwaysShowStatus": true,
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.copyOnSelection": true,
+    "editor.formatOnType": false,
     "editor.smoothScrolling": true,
     "editor.find.autoFindInSelection": true,
+    "editor.suggestSelection": "first",
     "editor.formatOnSave": true,
-    "workbench.tree.indent": 4,
-    "search.showLineNumbers": true,
-    "[jsonc]": {
+    "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

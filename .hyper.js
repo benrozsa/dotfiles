@@ -153,6 +153,7 @@ module.exports = {
     'hyper-dark-scrollbar',
     'hyper-font-smoothing',
     'hyper-blink',
+    'hypercwd',
   ],
 
   // in development, you can create a directory under
