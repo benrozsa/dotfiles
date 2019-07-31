@@ -32,8 +32,9 @@
     "prettier.printWidth": 80, 
     "prettier.tabWidth": 2, 
     "prettier.trailingComma": "all",
+    "prettier.endOfLine": "auto",
     "prettier.singleQuote": true,
-    "prettier.arrowParens": true, 
+    "prettier.arrowParens": "always", 
     "prettier.eslintIntegration": true,
     "prettier.smartEnable": true,
 
@@ -43,17 +44,25 @@
     "emmet.showSuggestionsAsSnippets": true,
     "emmet.triggerExpansionOnTab": true,
     
+    "vsicons.dontShowNewVersionMessage": true,
+    "vsicons.projectDetection.autoReload": true,
+   
     "editor.tabSize": 2,
     "editor.fontFamily": "Fira Code",
     "editor.fontWeight": "bold",
     "editor.fontLigatures": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": false,
-    "editor.smoothScrolling": true,
-    "editor.find.autoFindInSelection": true,
-    "editor.suggestSelection": "first",
     "editor.formatOnSave": true,
+    "editor.smoothScrolling": true,
+    "editor.suggestSelection": "first",
     "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }
