@@ -8,6 +8,9 @@ module.exports = {
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'stable',
 
+    // The number of rows to be persisted in terminal buffer for scrolling
+    scrollback: '10000',
+
     // default font size in pixels for all tabs
     fontSize: 12,
 
@@ -148,6 +151,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+    'hyperyellow',
     'hyper-atom-dark-transparent',
     'hyper-statusline',
     'hyper-dark-scrollbar',

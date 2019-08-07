@@ -34,7 +34,6 @@
     "prettier.trailingComma": "all",
     "prettier.endOfLine": "auto",
     "prettier.singleQuote": true,
-    "prettier.arrowParens": "always", 
     "prettier.eslintIntegration": true,
     "prettier.smartEnable": true,
 
@@ -64,5 +63,7 @@
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "editor.minimap.enabled": false,
+    "extensions.ignoreRecommendations": false
 }
