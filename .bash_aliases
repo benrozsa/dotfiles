@@ -3,7 +3,6 @@ alias zshconfig="vi ~/.zshrc"
 alias aliasconfig="vi ~/.bash_aliases"
 alias bashconfig="vi ~/.bash_aliases"
 alias vimconfig="vi ~/.vimrc"
-alias vsconfig="vi ~/Library/Application\ Support/Code/User/settings.json"
 
 # Git
 alias s="git status"
@@ -17,10 +16,6 @@ alias dot="cd ~/.dotfiles; git st"
 alias dfh='df -h | grep "/dev/"'
 alias grep='grep --color=auto'
 alias c="clear"
-
-# Python
-alias python='python3'
-alias pip='pip3'
 
 # -- Maven --
 alias mvnci='mvn clean install'
