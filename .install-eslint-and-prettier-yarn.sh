@@ -7,4 +7,5 @@ yarn add --dev \
     eslint-plugin-prettier \
     eslint-plugin-import \
     eslint-plugin-jsx-a11y \
+    eslint-plugin-jest \
     eslint-plugin-react

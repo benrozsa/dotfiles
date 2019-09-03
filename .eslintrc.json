@@ -1,8 +1,9 @@
 {
   "extends": [
     "airbnb",
-    "plugin:prettier/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "babel-eslint",
   "env": {
@@ -23,4 +24,3 @@
     "indent": ["error", 2]
   }
 }
-

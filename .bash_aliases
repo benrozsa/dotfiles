@@ -9,6 +9,7 @@ alias s="git status"
 alias a="git add ."
 alias d="git diff HEAD"
 alias p="git push"
+alias pu="git pull"
 alias lo="git log"
 
 # Other
@@ -23,6 +24,7 @@ alias cl='mvn clean install -Dmaven.test.skip'
 alias ci='mvn install -Dmaven.test.skip'
 alias cls='mvn clean install sling:install -Dmaven.test.skip'
 alias clj='mvn clean install -Dmaven.test.skip -Pjooq-generation'
+alias clp='mvn clean install -Plocal-karaf-deploy'
 
 # -- Working Directories --
 alias ws='cd ~/WebstormProjects'
