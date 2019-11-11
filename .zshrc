@@ -39,3 +39,6 @@ SPACESHIP_PROMPT_ADD_NEWLINE="false"
 # Run additional scripts
 source ~/.nvm/nvm.sh
 source $ZSH/oh-my-zsh.sh
+
+export YVM_DIR=/Users/rozsabence/.yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
