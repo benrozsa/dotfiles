@@ -1,8 +1,10 @@
 {
   "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
   "window.zoomLevel": 0,
   "extensions.ignoreRecommendations": false,
   "todo-tree.highlights.enabled": true,
+  "oneDarkPro.vivid": true,
 
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -12,7 +14,6 @@
   "editor.fontStyle": "italic",
   "editor.fontFamily": "IBM Plex Mono",
   "editor.fontWeight": "500",
-  "editor.formatOnPaste": true,
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.smoothScrolling": true,
@@ -54,15 +55,13 @@
     "typescriptreact"
   ],
 
-  "prettier.printWidth": 80,
-  "prettier.tabWidth": 2,
-  "prettier.arrowParens": "always",
-  "prettier.trailingComma": "all",
-  "prettier.endOfLine": "auto",
   "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.arrowParens": "always",
 
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsdk": "node_modules/typescript/lib",
 
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
@@ -85,5 +84,12 @@
   "vim.showmatch": true,
   "vim.autoindent": true,
   "vim.tabstop": 4,
-  "vim.softtabstop": 4
+  "vim.softtabstop": 4,
+  "vim.statusBarColorControl": true,
+
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  }
 }
