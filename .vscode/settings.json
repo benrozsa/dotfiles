@@ -1,6 +1,6 @@
 {
-  "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
+  "files.autoSave": "afterDelay",
   "window.zoomLevel": 0,
   "extensions.ignoreRecommendations": false,
   "todo-tree.highlights.enabled": true,
@@ -10,10 +10,10 @@
   "explorer.confirmDragAndDrop": false,
 
   "editor.tabSize": 4,
-  "editor.fontSize": 12,
+  "editor.fontSize": 13,
   "editor.fontStyle": "italic",
-  "editor.fontFamily": "IBM Plex Mono",
-  "editor.fontWeight": "500",
+  "editor.fontFamily": "Operator Mono",
+  "editor.fontWeight": "normal",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.smoothScrolling": true,
@@ -25,6 +25,9 @@
   "editor.lineNumbers": "on",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.renderWhitespace": "all",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
 
   "workbench.startupEditor": "newUntitledFile",
   "workbench.colorTheme": "One Dark Pro",
@@ -45,23 +48,15 @@
   "git.autoStash": true,
   "git.fetchOnPull": true,
 
+  "eslint.run": "onSave",
   "eslint.enable": true,
-  "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
 
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
-  "prettier.arrowParens": "always",
 
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.tsdk": "node_modules/typescript/lib",
 
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
@@ -85,11 +80,29 @@
   "vim.autoindent": true,
   "vim.tabstop": 4,
   "vim.softtabstop": 4,
-  "vim.statusBarColorControl": true,
+
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Esc>"],
+      "after": ["<Esc>"],
+      "commands": ["workbench.action.files.save"]
+    }
+  ],
 
   "workbench.colorCustomizations": {
     "statusBar.background": "#005f5f",
     "statusBar.noFolderBackground": "#005f5f",
     "statusBar.debuggingBackground": "#005f5f"
-  }
+  },
+  "sshfs.configs": [
+    {
+      "host": "opsys.inf.elte.hu",
+      "name": "OPRE",
+      "password": true,
+      "root": "/afs/inf.elte.hu/user/e/em/emt1p1",
+      "username": true
+    }
+  ],
+  "vim.easymotion": true,
+  "vim.highlightedyank.enable": true
 }

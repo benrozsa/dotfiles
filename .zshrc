@@ -28,7 +28,7 @@ fi
 # Configure zshell
 ZSH_THEME="spaceship"
 plugins=(
-  git 
+  git
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
