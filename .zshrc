@@ -17,27 +17,30 @@ export PYTHON_BIN="${HOME}/Library/Python/3.7/bin"
 
 export PATH=/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:${PATH}
 export PATH="$PYTHON_BIN:$CODE:${PATH}"
+export PATH="$HOME/.cargo/bin:$PATH"
+
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Load aliases
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-fi
+ if [ -f ~/.bash_aliases ]; then
+     source ~/.bash_aliases
+ fi
 
 # List Today's namedays
-if [ -f ~/.nevnap ]; then
-    source ~/.nevnap
-fi
+# if [ -f ~/.nevnap ]; then
+#     source ~/.nevnap
+# fi
 
-echo ""
-echo $(motivate) | fold -s -w76 | while read -r a; do echo "$a"; done
-echo ""
+# echo ""
+# echo $(motivate) | fold -s -w76 | while read -r a; do echo "$a"; done
+# echo ""
 
 
 # Configure zshell
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 plugins=(
   git
   zsh-syntax-highlighting
@@ -51,5 +54,9 @@ SPACESHIP_PROMPT_ADD_NEWLINE="false"
 source ~/.nvm/nvm.sh
 source $ZSH/oh-my-zsh.sh
 
+# YVM env
 export YVM_DIR=/Users/rozsabence/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+# GHC env
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
