@@ -86,15 +86,6 @@
     "statusBar.noFolderBackground": "#005f5f",
     "statusBar.debuggingBackground": "#005f5f"
   },
-  "sshfs.configs": [
-    {
-      "host": "opsys.inf.elte.hu",
-      "name": "OPRE",
-      "password": true,
-      "root": "/afs/inf.elte.hu/user/e/em/emt1p1",
-      "username": true
-    }
-  ],
   "vim.easymotion": true,
   "vim.highlightedyank.enable": true,
   "diffEditor.ignoreTrimWhitespace": false,
