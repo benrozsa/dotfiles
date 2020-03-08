@@ -1,8 +1,0 @@
-# Mai Nevnap(ok)
-
-nev=$(cat ~/.nevnap.txt | grep "$(date +"%m/%d")" | cut -d '-' -f 2)
-echo "Ma ${nev} nap van"
-
-# Holnapi Nevnap(ok)
-nev=$(cat ~/.nevnap.txt | grep "$(date -v +1d +"%m/%d")" | cut -d '-' -f 2)
-echo "Holnap ${nev} nap lesz"

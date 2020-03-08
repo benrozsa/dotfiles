@@ -4,6 +4,7 @@ alias aliasconfig="vi ~/.bash_aliases"
 alias vimconfig="vi ~/.vimrc"
 alias sshconfig="vi ~/.ssh/config"
 alias gitconfig="vi ~/.gitconfig"
+alias fishconfig="vi ~/.config/fish/config.fish"
 
 # Python -- Dangerous!!
 alias python="python3"
@@ -17,8 +18,8 @@ alias fit=="git"
 alias s="git status"
 alias a="git add ."
 alias d="git diff HEAD"
-alias p="git push"
-alias pu="git pull"
+alias pu="git push"
+alias p="git pull"
 alias lo="git log"
 alias lop="git log -p"
 alias br="git br -a"
@@ -35,6 +36,5 @@ alias cl='mvn clean install -Dmaven.test.skip'
 
 # -- Working Directories --
 alias ws='cd ~/WebstormProjects'
-alias is='cd ~/IdeaProjects'
 alias github='cd ~/Github'
 alias hs='cd ~/HobbyProjects'

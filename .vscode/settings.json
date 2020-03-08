@@ -2,20 +2,18 @@
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "off",
   "window.zoomLevel": 0,
+  "workbench.iconTheme": "vscode-icons",
   "extensions.ignoreRecommendations": false,
-  "todo-tree.highlights.enabled": true,
   "oneDarkPro.vivid": true,
-
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-
   "editor.tabSize": 4,
-  "editor.fontSize": 12,
-  "editor.fontStyle": "italic",
-  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Operator Mono",
   "editor.fontWeight": "normal",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
   "editor.minimap.enabled": false,
@@ -23,16 +21,20 @@
   "editor.fontLigatures": true,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "on",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.renderWhitespace": "all",
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "vscode-icons",
-
   "terminal.external.osxExec": "iTerm.App",
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.rendererType": "dom",
@@ -41,31 +43,21 @@
   "terminal.integrated.fontFamily": "JetBrains Mono",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "500",
-
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.autoStash": true,
   "git.fetchOnPull": true,
-
   "eslint.run": "onSave",
   "eslint.enable": true,
   "eslint.alwaysShowStatus": true,
-
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
-
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
-
   "vsicons.dontShowNewVersionMessage": true,
   "vsicons.projectDetection.autoReload": true,
-
   "remote.SSH.showLoginTerminal": true,
-
   "vim.syntax": "on",
   "vim.number": true,
   "vim.wildmenu": true,
@@ -80,7 +72,8 @@
   "vim.autoindent": true,
   "vim.tabstop": 4,
   "vim.softtabstop": 4,
-
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": ["<Esc>"],
@@ -88,7 +81,6 @@
       "commands": ["workbench.action.files.save"]
     }
   ],
-
   "workbench.colorCustomizations": {
     "statusBar.background": "#005f5f",
     "statusBar.noFolderBackground": "#005f5f",
@@ -105,5 +97,12 @@
   ],
   "vim.easymotion": true,
   "vim.highlightedyank.enable": true,
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "workbench.preferredHighContrastColorTheme": "One Dark Pro",
+  "workbench.preferredLightColorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro",
+  "search.enableSearchEditorPreview": true
 }
