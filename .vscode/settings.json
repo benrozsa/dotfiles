@@ -10,9 +10,9 @@
   "explorer.confirmDragAndDrop": false,
 
   "editor.tabSize": 4,
-  "editor.fontSize": 13,
-  "editor.fontFamily": "Operator Mono",
-  "editor.fontWeight": "normal",
+  "editor.fontSize": 12,
+  "editor.fontFamily": "Jetbrains Mono",
+  "editor.fontWeight": "300",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -28,7 +28,7 @@
     "source.fixAll": true
   },
 
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.preferredDarkColorTheme": "One Dark Pro",
   "workbench.preferredHighContrastColorTheme": "One Dark Pro",
@@ -80,6 +80,9 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   "vim.syntax": "on",
   "vim.number": true,
@@ -108,5 +111,7 @@
   ],
 
   "go.formatTool": "goimports",
-  "go.useLanguageServer": true
+  "go.useLanguageServer": true,
+
+  "liveServer.settings.donotShowInfoMsg": true
 }
