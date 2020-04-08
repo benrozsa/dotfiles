@@ -32,11 +32,6 @@ export PATH="$PYTHON_BIN:$CODE:${PATH}"
 # Rust Package Manager
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# LLVM
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-
 # Localization
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -61,9 +56,6 @@ source $ZSH/oh-my-zsh.sh
 # YVM env
 export YVM_DIR=/Users/rozsabence/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-
-# GHC env
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 # Yarn env
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

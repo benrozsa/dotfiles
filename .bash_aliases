@@ -19,11 +19,14 @@ alias s="git status"
 alias a="git add ."
 alias d="git diff HEAD"
 alias pu="git push"
-alias p="git pull"
+alias p="git pull --rebase --autostash"
 alias lo="git log"
 alias lop="git log -p"
 alias br="git br -a"
 alias f="git fetch"
+alias gs="git stash"
+alias gsp="git stash pop"
+alias yd="yarn dev"
 
 # Other
 alias dfh='df -h | grep "/dev/"'
