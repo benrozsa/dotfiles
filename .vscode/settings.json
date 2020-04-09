@@ -24,9 +24,8 @@
   "editor.insertSpaces": true,
   "editor.lineNumbers": "on",
   "editor.renderWhitespace": "all",
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
+
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
 
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
@@ -35,9 +34,9 @@
   "workbench.preferredLightColorTheme": "One Dark Pro",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#005f5f",
-    "statusBar.noFolderBackground": "#005f5f",
-    "statusBar.debuggingBackground": "#005f5f"
+    "statusBar.background": "#2B7FC6",
+    "statusBar.noFolderBackground": "#2B7FC6",
+    "statusBar.debuggingBackground": "#2B7FC6"
   },
 
   "terminal.external.osxExec": "iTerm.App",
