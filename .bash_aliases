@@ -26,6 +26,10 @@ alias br="git br -a"
 alias f="git fetch"
 alias gs="git stash"
 alias gsp="git stash pop"
+
+# Yarn
+alias y="yarn"
+alias ys="yarn start"
 alias yd="yarn dev"
 
 # Other

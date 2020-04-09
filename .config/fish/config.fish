@@ -2,8 +2,21 @@
 # set -x PATH $PATH /user/local/bin/
 # set -x PATH $PATH /sbin/
 
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/node@12/bin" $fish_user_paths
+
+# Ruby
+set -x PATH $PATH /usr/local/lib/ruby/gems/2.7.0/bin
+
+# Go
+# set -x GOPATH $HOME/go/bin
+set -x -U GOPATH $HOME/go
+
 # Flutter
-set -x PATH $PATH $HOME/Github/flutter/bin
+set FLUTTER_PATH $HOME/Github/flutter/bin
+set -x PATH $PATH $FLUTTER_PATH 
+set -x PATH $PATH $FLUTTER_PATH/cache/dart-sdk
+set -x PATH $PATH $FLUTTER_PATH/cache/dart-sdk/bin
 
 # Localization
 export LC_ALL=en_US.UTF-8
