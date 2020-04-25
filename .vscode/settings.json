@@ -24,7 +24,6 @@
   "editor.insertSpaces": true,
   "editor.lineNumbers": "on",
   "editor.renderWhitespace": "all",
-  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
   "editor.tokenColorCustomizations": {
     "semanticHighlighting": true
   },

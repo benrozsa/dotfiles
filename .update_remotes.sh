@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cp ~/.bash_aliases ~/Github/dotfiles
-cp ~/.zshrc ~/Github/dotfiles
-cp ~/.vimrc ~/Github/dotfiles
-cp ~/Library/Application\ Support/Code/User/settings.json ~/Github/dotfiles/.vscode/
-cp ~/.config/fish/config.fish ~/Github/dotfiles/.config/fish/
+cp ~/.bash_aliases $(eval 'pwd')
+cp ~/.zshrc $(eval 'pwd') 
+cp ~/.vimrc $(eval 'pwd') 
+cp ~/Library/Application\ Support/Code/User/settings.json "$(eval 'pwd')/.vscode/"
+cp ~/.config/fish/config.fish "$(eval 'pwd')/.config/fish/"
 

@@ -41,7 +41,5 @@ alias c="clear && printf '\e[3J'"
 alias ci='mvn clean install'
 alias cl='mvn clean install -Dmaven.test.skip'
 
-# -- Working Directories --
-alias ws='cd ~/WebstormProjects'
-alias github='cd ~/Github'
-alias hs='cd ~/HobbyProjects'
+# -- Directiories --
+alias github='cd ~/Dev/Github'
