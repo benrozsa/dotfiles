@@ -58,6 +58,7 @@
   "eslint.run": "onSave",
   "eslint.enable": true,
   "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": ["source.fixAll"],
 
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
