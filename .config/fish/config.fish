@@ -5,6 +5,17 @@ set -x PATH $PATH /usr/local/lib/ruby/gems/2.7.0/bin
 # set -x GOPATH $HOME/go/bin
 set -x -U GOPATH $HOME/Dev/go
 
+# emacs
+#set -x PATH $PATH $HOME/.emacs.d/bin
+#set -x EMACS $HOME/.emacs.d/bin
+
+
+
+# Deno
+set -x DENO_PATH $HOME/.deno
+set -x PATH $DENO_PATH/bin:$PATH
+
+
 # Flutter
 set FLUTTER_PATH $HOME/Dev/Github/flutter/bin
 set -x PATH $PATH $FLUTTER_PATH 
@@ -47,7 +58,7 @@ alias p="git pull"
 alias pu="git push"
 alias br="git branch -a"
 alias lo="git log"
-alias gs="git stash"
+alias gs="git stash --all"
 alias gsp="git stash pop"
 alias gsl="git stash list"
 
@@ -55,6 +66,7 @@ alias gsl="git stash list"
 alias y="yarn"
 alias ys="yarn start"
 alias yd="yarn dev"
+alias yb="yarn build"
 
 # Gatsby
 alias gd="gatsby develop"

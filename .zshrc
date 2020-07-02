@@ -25,6 +25,9 @@ export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH=/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:${PATH}
 export PATH="/usr/local/sbin:$PATH"
 
+#export EMACS="${HOME}/.emacs.d/bin"
+#export PATH="$EMACS:${PATH}"
+
 # Python
 export PYTHON_BIN="${HOME}/Library/Python/3.7/bin"
 export PATH="$PYTHON_BIN:$CODE:${PATH}"
