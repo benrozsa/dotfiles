@@ -44,6 +44,7 @@
   "editor.fontLigatures": true,
   "editor.lineNumbers": "on",
   "editor.renderWhitespace": "all",
+  "editor.codeActionsOnSave": ["source.fixAll"],
   "editor.semanticTokenColorCustomizations": {
     "enabled": true
   },
@@ -78,7 +79,12 @@
   "eslint.run": "onSave",
   "eslint.enable": true,
   "eslint.alwaysShowStatus": true,
-  "editor.codeActionsOnSave": ["source.fixAll"],
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
 
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
