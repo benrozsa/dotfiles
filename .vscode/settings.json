@@ -6,6 +6,7 @@
   "oneDarkPro.vivid": true,
   "search.enableSearchEditorPreview": true,
   "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
 
@@ -28,12 +29,16 @@
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "editor.fontSize": 12,
-  "editor.fontFamily": "Jetbrains Mono",
-  "editor.fontWeight": "300",
+  "editor.fontFamily": "Roboto Mono",
+  "editor.fontWeight": "400",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,

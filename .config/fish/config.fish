@@ -2,14 +2,11 @@
 set -x PATH $PATH /usr/local/lib/ruby/gems/2.7.0/bin
 
 # Go
-# set -x GOPATH $HOME/go/bin
 set -x -U GOPATH $HOME/Dev/go
 
-# emacs
-#set -x PATH $PATH $HOME/.emacs.d/bin
-#set -x EMACS $HOME/.emacs.d/bin
-
-
+# Rust Package Manager
+set -x CARGO_PATH $HOME/.cargo/bin
+set -x PATH $CARGO_PATH:$PATH
 
 # Deno
 set -x DENO_PATH $HOME/.deno
@@ -35,12 +32,10 @@ end
 alias c="clear && printf '\e[3J'"
 alias l="ls -la"
 
-alias hs="cd ~/HobbyProjects/"
-alias ws="cd ~/WebstormProjects/"
-
 alias fishconfig="vi ~/.config/fish/config.fish"
 alias sshconfig="vi ~/.ssh/config"
 alias vimconfig="vi ~/.vimrc"
+alias nvimconfig="vi ~/.config/nvim/init.vim"
 alias zshconfig="vi ~/.zshrc"
 alias gitconfig="vi ~/.gitconfig"
 alias aliasconfig="vi ~/.bash_aliases"
@@ -67,6 +62,10 @@ alias y="yarn"
 alias ys="yarn start"
 alias yd="yarn dev"
 alias yb="yarn build"
+alias yt="yarn test"
+alias yl="yarn lint"
 
 # Gatsby
 alias gd="gatsby develop"
+alias gb="gatsby build"
+alias gs="gatsby serve"
