@@ -7,5 +7,7 @@ git config --global alias.c commit
 git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.pull pull --rebase
-git config --global alias.hist "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
-git config --global alias.lg "log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global alias.hist "log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+git config pull.rebase true
+git config rebase.autoStash true
