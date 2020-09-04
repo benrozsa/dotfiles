@@ -1,3 +1,5 @@
+#!/bin/bash
+
 git config --global user.name "Bence Rozsa"
 git config --global user.email "robence@gmil.com"
 git config --global core.editor vim
@@ -9,5 +11,5 @@ git config --global alias.br branch
 git config --global alias.pull pull --rebase
 git config --global alias.hist "log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-git config pull.rebase true
-git config rebase.autoStash true
+git config --global pull.rebase true
+git config --global rebase.autoStash true

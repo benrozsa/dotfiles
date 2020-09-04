@@ -55,7 +55,7 @@
   },
 
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "newUntitledFile",
+  "workbench.startupEditor": "welcomePage",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.preferredDarkColorTheme": "One Dark Pro",
   "workbench.preferredHighContrastColorTheme": "One Dark Pro",
@@ -129,7 +129,6 @@
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
 
-  "liveServer.settings.donotShowInfoMsg": true,
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -140,5 +139,7 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
-  "projectManager.git.baseFolders": ["/Users/rozsabence/Dev"]
+  "projectManager.git.baseFolders": ["/Users/rozsabence/Dev"],
+  "todo-tree.tree.showScanModeButton": false,
+  "window.vibrancy": "dark"
 }
