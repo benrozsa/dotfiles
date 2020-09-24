@@ -23,7 +23,8 @@ set colorcolumn=80  " Show a red line to maintain standard
                     " Line length
 
 
-" map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
 
 "---------------------
 "----- TOOLS  --------
