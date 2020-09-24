@@ -22,7 +22,7 @@ set ruler           " Show at which column and row
 set colorcolumn=80  " Show a red line to maintain standard
                     " Line length
 
-
+" nmap <F6> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 
@@ -34,8 +34,8 @@ map <C-n> :NERDTreeToggle<CR>
 Plug 'preservim/nerdtree'
 
 " File Search
-Plug 'junegunn/fzf'
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " -------------------
 " ----- STYLES  -----
@@ -75,6 +75,12 @@ call plug#end()
 "------------------
 "--- VIM CONFIG ---
 "------------------
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 let g:one_allow_italics = 1     " I love italic for comments
 

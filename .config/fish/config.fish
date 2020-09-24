@@ -26,6 +26,7 @@ set -x PATH $PATH $FLUTTER_PATH/cache/dart-sdk/bin
 # Aliases
 alias c="clear && printf '\e[3J'"
 alias l="ls -la"
+alias vi="nvim"
 
 alias fishconfig="nvim ~/.config/fish/config.fish"
 alias sshconfig="nvim ~/.ssh/config"
