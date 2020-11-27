@@ -1,135 +1,66 @@
 {
-  "files.trimTrailingWhitespace": true,
-  "files.autoSave": "off",
-  "window.zoomLevel": 0,
-  "extensions.ignoreRecommendations": false,
-  "oneDarkPro.vivid": true,
-  "search.enableSearchEditorPreview": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": false,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
 
+  "window.zoomLevel": 0,
+
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Monaco",
+  "editor.fontSize": 12,
+  "editor.fontWeight": 500,
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.codeActionsOnSave": { "source.fixAll": false },
+  "editor.renameOnType": true,
+
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.showSuggestionsAsSnippets": false,
+  "emmet.showExpandedAbbreviation": "never",
+
+  "diffEditor.renderSideBySide": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[typescript]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[typescriptreact]": {
-    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  "editor.insertSpaces": true,
-  "editor.detectIndentation": false,
-  "editor.tabSize": 4,
-  "editor.fontSize": 12,
-  "editor.fontFamily": "JetBrains Mono",
-  "editor.fontWeight": "400",
-  "editor.formatOnType": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.smoothScrolling": true,
-  "editor.suggestSelection": "first",
-  "editor.minimap.enabled": false,
-  "editor.rulers": [80],
-  "editor.fontLigatures": true,
-  "editor.lineNumbers": "on",
-  "editor.renderWhitespace": "all",
-  "editor.codeActionsOnSave": ["source.fixAll"],
-  "editor.semanticTokenColorCustomizations": {
-    "enabled": true
-  },
-
-  "workbench.sideBar.location": "left",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "welcomePage",
-  "workbench.colorTheme": "One Dark Pro",
-  "workbench.preferredDarkColorTheme": "One Dark Pro",
-  "workbench.preferredHighContrastColorTheme": "One Dark Pro",
-  "workbench.preferredLightColorTheme": "One Dark Pro",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#1A1A1A",
-    "statusBar.noFolderBackground": "#1A1A1A",
-    "statusBar.debuggingBackground": "#1A1A1A"
-  },
-
-  "terminal.external.osxExec": "iTerm.App",
-  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-  "terminal.integrated.rendererType": "dom",
-  "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.fontFamily": "JetBrains Mono",
-  "terminal.integrated.fontSize": 12,
-  "terminal.integrated.fontWeight": "500",
-
-  "git.confirmSync": false,
-  "git.autofetch": true,
-  "git.enableSmartCommit": true,
-  "git.autoStash": true,
-  "git.fetchOnPull": true,
-
-  "eslint.run": "onSave",
-  "eslint.enable": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact"
-  ],
-
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.triggerExpansionOnTab": true,
-
-  "vsicons.dontShowNewVersionMessage": true,
-  "vsicons.projectDetection.autoReload": true,
-
-  "vim.syntax": "on",
-  "vim.number": true,
-  "vim.wildmenu": true,
-  "vim.showcmd": true,
-  "vim.nocompatible": true,
-  "vim.background": "dark",
-  "vim.backspace": "indent,eol,start",
-  "vim.textwidth": 79,
-  "vim.wrapmargin": 8,
-  "vim.encoding": "utf-8",
-  "vim.showmatch": true,
-  "vim.autoindent": true,
-  "vim.tabstop": 4,
-  "vim.softtabstop": 4,
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/local/bin/nvim",
-  "vim.easymotion": true,
-  "vim.highlightedyank.enable": true,
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<Esc>"],
-      "after": ["<Esc>"],
-      "commands": ["workbench.action.files.save"]
-    }
-  ],
-
-  "go.formatTool": "goimports",
-  "go.useLanguageServer": true,
-
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "projectManager.git.baseFolders": ["~/Dev"],
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -140,7 +71,8 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
-
-  "projectManager.git.baseFolders": ["/Users/rozsabence/Dev"],
+  "gitlens.advanced.messages": {
+    "suppressCommitNotFoundWarning": true
+  },
   "todo-tree.tree.showScanModeButton": false
 }

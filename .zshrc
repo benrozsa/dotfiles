@@ -1,14 +1,14 @@
 # Set environment variables
 BREW_HOME="/usr/local/Cellar"
-MAVEN_VERSION="$(ls "$BREW_HOME/maven/")"
-HOME="/Users/rozsabence"
+# MAVEN_VERSION="$(ls "$BREW_HOME/maven/")"
+HOME="/Users/ben"
 
 # Java version
 export JAVA_VERSION=11
 export JAVA_HOME=`/usr/libexec/java_home -v ${JAVA_VERSION}`
-export M2_HOME="$BREW_HOME/maven/$MAVEN_VERSION/libexec"
-export MAVEN_HOME=$M2_HOME
-export M2=$M2_HOME/bin
+# export M2_HOME="$BREW_HOME/maven/$MAVEN_VERSION/libexec"
+# export MAVEN_HOME=$M2_HOME
+# export M2=$M2_HOME/bin
 export NVM_DIR="$HOME/.nvm"
 export PKG_CONFIG_PATH="${BREW_HOME}/ncurses/6.1/lib/pkgconfig"
 
@@ -25,12 +25,6 @@ export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH=/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:${PATH}
 export PATH="/usr/local/sbin:$PATH"
 
-#export EMACS="${HOME}/.emacs.d/bin"
-#export PATH="$EMACS:${PATH}"
-
-# Python
-export PYTHON_BIN="${HOME}/Library/Python/3.7/bin"
-export PATH="$PYTHON_BIN:$CODE:${PATH}"
 
 # Rust Package Manager
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -57,12 +51,9 @@ source "$HOME/.nvm/nvm.sh"
 source $ZSH/oh-my-zsh.sh
 
 # YVM env
-export YVM_DIR=/Users/rozsabence/.yvm
+export YVM_DIR="$HOME/.yvm"
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 # Yarn env
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# VLC
-export DISPLAY=:0
 

@@ -1,9 +1,3 @@
-"---------------------
-"----- PLUGINS -------
-"---------------------
-
-call plug#begin('~/.local/share/nvim/plugged')
-
 set number          " Show line number for each line
 set autoindent      " Copy indent from current line when
                     " Starting a new line
@@ -22,9 +16,16 @@ set ruler           " Show at which column and row
 set colorcolumn=80  " Show a red line to maintain standard
                     " Line length
 
+
+"---------------------
+"-- NEOVIM PLUGINS ---
+"---------------------
+
+call plug#begin('~/.local/share/nvim/plugged')
+
 " nmap <F6> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
 
 "---------------------
 "----- TOOLS  --------
@@ -42,7 +43,7 @@ Plug 'junegunn/fzf.vim'
 " -------------------
 
 " Theming
-Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 
 " Statusline
@@ -68,7 +69,7 @@ Plug 'sheerun/vim-polyglot'
 " Create :Prettier command
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-" End of Nvim plugins
+    " End of Nvim plugins
 call plug#end()
 
 
@@ -83,10 +84,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 let g:one_allow_italics = 1     " I love italic for comments
-
+let g:rustfmt_autosave = 1      " Autoformat Rust on save
 syntax on                       " Turn on syntax highlight
-
-colorscheme one                 " one is the name of color scheme
-set background=dark             " for the dark version
+filetype plugin indent on       " Better indents maybe
+colorscheme onedark
 set termguicolors               " Use true colors in terminal
 
