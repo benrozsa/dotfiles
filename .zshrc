@@ -1,34 +1,3 @@
-# Set environment variables
-BREW_HOME="/usr/local/Cellar"
-# MAVEN_VERSION="$(ls "$BREW_HOME/maven/")"
-HOME="/Users/ben"
-
-# Java version
-export JAVA_VERSION=11
-export JAVA_HOME=`/usr/libexec/java_home -v ${JAVA_VERSION}`
-# export M2_HOME="$BREW_HOME/maven/$MAVEN_VERSION/libexec"
-# export MAVEN_HOME=$M2_HOME
-# export M2=$M2_HOME/bin
-export NVM_DIR="$HOME/.nvm"
-export PKG_CONFIG_PATH="${BREW_HOME}/ncurses/6.1/lib/pkgconfig"
-
-# Zshell
-export ZSH="${HOME}/.oh-my-zsh"
-
-# Default text editor
-export EDITOR="$(command -v vim)"
-
-# VSCode
-export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-# Binary Locations
-export PATH=/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:${PATH}
-export PATH="/usr/local/sbin:$PATH"
-
-
-# Rust Package Manager
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Localization
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -38,22 +7,31 @@ if [ -f "$HOME/.bash_aliases" ]; then
 source "$HOME/.bash_aliases"
 fi
 
-# Configure zshell
-ZSH_THEME="robbyrussell"
+# VSCode
+export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export ZSH="/Users/ben/.oh-my-zsh"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE="nerdfont-complete"
+
+# plugins=(git)
 plugins=(
         git
         zsh-syntax-highlighting
         zsh-autosuggestions
         )
 
-# Run additional scripts
-source "$HOME/.nvm/nvm.sh"
 source $ZSH/oh-my-zsh.sh
 
-# YVM env
-export YVM_DIR="$HOME/.yvm"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export YVM_DIR=/usr/local/opt/yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
-# Yarn env
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

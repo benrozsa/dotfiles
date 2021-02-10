@@ -1,4 +1,4 @@
-filetype plugin on " Use own syntax and formatter if available
+
 
 syntax on           " Turn on syntax highlighting, or really
                     " color coding.
@@ -7,7 +7,7 @@ syntax on           " Turn on syntax highlighting, or really
 
 set t_Co=256
 
-set number          " Show line number for each line
+" set number          " Show line number for each line
 set wildmenu
 set showcmd
 set nocompatible
@@ -48,8 +48,8 @@ set hlsearch        " Highlight search results
 " set mouse=a         " Enable mouse scrolling
 
                     " Load onedark colorscheme from pack/*/opt
-packadd! onedark.vim
-colorscheme onedark
+" packadd! onedark.vim
+" colorscheme onedark
 
                     " Move cursor inside page 
                     " when scrolling via trackpad

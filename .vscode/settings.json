@@ -12,7 +12,10 @@
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
   "editor.codeActionsOnSave": { "source.fixAll": false },
-  "editor.renameOnType": true,
+  "editor.linkedEditing": true,
+
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
 
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
@@ -56,11 +59,15 @@
     "editor.tabSize": 2
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
 
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
+
   "projectManager.git.baseFolders": ["~/Dev"],
+
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
