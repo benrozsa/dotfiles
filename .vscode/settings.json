@@ -5,6 +5,8 @@
   "window.zoomLevel": 0,
 
   "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
   "editor.fontFamily": "Monaco",
   "editor.fontSize": 12,
   "editor.fontWeight": 500,
@@ -27,6 +29,11 @@
 
   "diffEditor.renderSideBySide": false,
   "diffEditor.ignoreTrimWhitespace": false,
+
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
+
+  "projectManager.git.baseFolders": ["~/Dev"],
 
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
@@ -63,11 +70,6 @@
     "editor.tabSize": 2
   },
 
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
-
-  "projectManager.git.baseFolders": ["~/Dev"],
-
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -81,5 +83,7 @@
   "gitlens.advanced.messages": {
     "suppressCommitNotFoundWarning": true
   },
-  "todo-tree.tree.showScanModeButton": false
+  "todo-tree.tree.showScanModeButton": false,
+  "python.languageServer": "Pylance",
+  "dart.previewLsp": true
 }

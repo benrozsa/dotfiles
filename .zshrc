@@ -10,10 +10,21 @@ fi
 # VSCode
 export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# Deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Flutter
+export FLUTTER_INSTALL="$HOME/Dev/flutter"
+export PATH="$FLUTTER_INSTALL/bin:$PATH"
+
+# Android Platform Tools
+export PATH="$HOME/Library/Android/sdk/platform-tools/:$PATH"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="/Users/ben/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
