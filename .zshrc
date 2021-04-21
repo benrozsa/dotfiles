@@ -10,6 +10,10 @@ fi
 # VSCode
 export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# Java
+export JAVA_VERSION=8
+export JAVA_HOME=`/usr/libexec/java_home -v ${JAVA_VERSION}`
+
 # Deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -34,6 +38,7 @@ plugins=(
         git
         zsh-syntax-highlighting
         zsh-autosuggestions
+        mongodb
         )
 
 source $ZSH/oh-my-zsh.sh

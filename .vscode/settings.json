@@ -9,7 +9,7 @@
   "editor.formatOnType": true,
   "editor.fontFamily": "Monaco",
   "editor.fontSize": 12,
-  "editor.fontWeight": 500,
+  "editor.fontWeight": 400,
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
@@ -69,6 +69,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
 
   "[dart]": {
     "editor.formatOnSave": true,
@@ -85,5 +88,6 @@
   },
   "todo-tree.tree.showScanModeButton": false,
   "python.languageServer": "Pylance",
-  "dart.previewLsp": true
+  "dart.previewLsp": true,
+  "telemetry.enableTelemetry": false
 }

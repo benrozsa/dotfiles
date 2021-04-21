@@ -35,6 +35,8 @@ alias gsp="git stash pop"
 alias y="yarn"
 alias ys="yarn start"
 alias yd="yarn dev"
+alias yb="yarn build"
+alias yt="yarn test"
 
 # Other
 alias grep='grep --color=auto'
