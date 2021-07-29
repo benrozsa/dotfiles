@@ -7,6 +7,9 @@ if [ -f "$HOME/.bash_aliases" ]; then
 source "$HOME/.bash_aliases"
 fi
 
+# Brew
+export PATH="/usr/local/sbin:$PATH"
+
 # VSCode
 export CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 

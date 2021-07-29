@@ -2,8 +2,6 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "material-icon-theme",
 
-  "window.zoomLevel": 0,
-
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
@@ -13,11 +11,15 @@
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
-  "editor.codeActionsOnSave": { "source.fixAll": false },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.organizeImports": false
+  },
   "editor.linkedEditing": true,
 
   "terminal.integrated.sendKeybindingsToShell": true,
   "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.tabs.enabled": true,
 
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
@@ -30,11 +32,6 @@
   "diffEditor.renderSideBySide": false,
   "diffEditor.ignoreTrimWhitespace": false,
 
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
-
-  "projectManager.git.baseFolders": ["~/Dev"],
-
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
   "git.autofetch": true,
@@ -42,33 +39,11 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
 
-  "[yaml]": {
+  "[json, jsonc, yaml, javascript, typescript, javascriptreact, typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
+
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
@@ -83,11 +58,14 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
-  "gitlens.advanced.messages": {
-    "suppressCommitNotFoundWarning": true
-  },
-  "todo-tree.tree.showScanModeButton": false,
-  "python.languageServer": "Pylance",
   "dart.previewLsp": true,
-  "telemetry.enableTelemetry": false
+  "telemetry.enableTelemetry": false,
+  "nxConsole.enableTelemetry": false,
+  "json.schemas": [
+    {
+      "name": "vscode-expo-manifest",
+      "url": "file:///Users/ben/Library/Application%20Support/Code/User/globalStorage/bycedric.vscode-expo/manifest-42.0.0.json",
+      "fileMatch": ["app.json", "app.config.json"]
+    }
+  ]
 }
