@@ -1,9 +1,6 @@
 {
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "material-icon-theme",
-
-  "window.zoomLevel": 0,
-
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
@@ -13,6 +10,7 @@
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
+  "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     "source.organizeImports": false
@@ -71,11 +69,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
-
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
-
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -87,7 +83,6 @@
     "editor.wordBasedSuggestions": false
   },
   "dart.previewLsp": true,
-
   "telemetry.enableTelemetry": false,
   "nxConsole.enableTelemetry": false,
   "json.schemas": [
