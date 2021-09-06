@@ -16,28 +16,22 @@
     "source.organizeImports": false
   },
   "editor.linkedEditing": true,
-
   "terminal.integrated.sendKeybindingsToShell": true,
   "terminal.integrated.fontFamily": "Hack Nerd Font",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
-
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
-
   "emmet.triggerExpansionOnTab": true,
   "emmet.showAbbreviationSuggestions": false,
   "emmet.showSuggestionsAsSnippets": false,
   "emmet.showExpandedAbbreviation": "never",
-
   "diffEditor.renderSideBySide": false,
   "diffEditor.ignoreTrimWhitespace": false,
-
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.path": "/usr/local/opt/git/bin/git",
-
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
 
@@ -69,6 +63,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
+
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
@@ -84,7 +79,6 @@
   },
   "dart.previewLsp": true,
   "telemetry.enableTelemetry": false,
-  "nxConsole.enableTelemetry": false,
   "json.schemas": [
     {
       "name": "vscode-expo-manifest",
