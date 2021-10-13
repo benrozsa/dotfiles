@@ -20,12 +20,10 @@ export PATH="$FLUTTER_INSTALL/bin:$PATH"
 # Android Platform Tools
 export PATH="$HOME/Library/Android/sdk/platform-tools/:$PATH"
 
-# Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
-
 
 plugins=(
         git
@@ -41,6 +39,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Yvm
-# export YVM_DIR=/usr/local/opt/yvm
-export YVM_DIR="$HOME/.yvm"
+# export YVM_DIR="$HOME/.yvm"
+export YVM_DIR=/usr/local/opt/yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
