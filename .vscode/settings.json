@@ -34,6 +34,7 @@
   "git.path": "/usr/local/opt/git/bin/git",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "css.validate": false,
 
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -78,7 +79,7 @@
     "editor.wordBasedSuggestions": false
   },
   "dart.previewLsp": true,
-  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "json.schemas": [
     {
       "name": "vscode-expo-manifest",
