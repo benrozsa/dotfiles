@@ -17,7 +17,7 @@
   },
   "editor.linkedEditing": true,
   "terminal.integrated.sendKeybindingsToShell": true,
-  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "explorer.confirmDragAndDrop": false,
@@ -79,6 +79,8 @@
     "editor.wordBasedSuggestions": false
   },
   "dart.previewLsp": true,
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "telemetry.telemetryLevel": "off",
   "json.schemas": [
     {
