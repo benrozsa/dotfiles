@@ -7,4 +7,6 @@ cp $location/.bash_aliases ~/
 cp $location/.zshrc ~/
 cp $location/.vimrc ~/
 cp "$location/.vscode/settings.json" ~/Library/Application\ Support/Code/User/
+cp "$location/.config/nvim/init.vim" ~/.config/nvim/
+
 
