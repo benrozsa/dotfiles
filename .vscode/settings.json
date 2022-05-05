@@ -10,14 +10,12 @@
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
-  "editor.bracketPairColorization.enabled": true,
+  "editor.linkedEditing": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     "source.organizeImports": false
   },
-  "editor.linkedEditing": true,
   "terminal.integrated.sendKeybindingsToShell": true,
-  "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "explorer.confirmDragAndDrop": false,
@@ -31,42 +29,16 @@
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
   "git.autofetch": true,
-  "git.path": "/usr/local/opt/git/bin/git",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "css.validate": false,
-
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+  "[json][jsonc][javascript][typescript][javascriptreact][typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
-
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dart]": {
     "editor.formatOnSave": true,
@@ -78,15 +50,10 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
-  "dart.previewLsp": true,
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "telemetry.telemetryLevel": "off",
-  "json.schemas": [
-    {
-      "name": "vscode-expo-manifest",
-      "url": "file:///Users/ben/Library/Application%20Support/Code/User/globalStorage/bycedric.vscode-expo/manifest-42.0.0.json",
-      "fileMatch": ["app.json", "app.config.json"]
-    }
-  ]
+  "files.exclude": {
+    "**/node_modules/**": true
+  },
+  "dart.flutterSdkPath": "/Users/ben/flutter",
+  "python.defaultInterpreterPath": "/usr/bin/python3"
 }
