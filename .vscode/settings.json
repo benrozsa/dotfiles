@@ -17,12 +17,11 @@
   },
   "terminal.integrated.sendKeybindingsToShell": true,
   "terminal.integrated.tabs.enabled": true,
-  "terminal.integrated.defaultProfile.osx": "zsh",
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "emmet.triggerExpansionOnTab": true,
-  "emmet.showAbbreviationSuggestions": false,
-  "emmet.showSuggestionsAsSnippets": false,
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.showSuggestionsAsSnippets": true,
   "emmet.showExpandedAbbreviation": "never",
   "diffEditor.renderSideBySide": false,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -40,20 +39,9 @@
     "editor.tabSize": 4,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [80],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
-  },
   "telemetry.telemetryLevel": "off",
   "files.exclude": {
     "**/node_modules/**": true
   },
-  "dart.flutterSdkPath": "/Users/ben/flutter",
-  "python.defaultInterpreterPath": "/usr/bin/python3"
+  "githubPullRequests.fileListLayout": "flat"
 }
