@@ -13,5 +13,6 @@ git config --global alias.hist "log --graph --pretty=format:'%C(auto)%h -%d %s %
 
 git config --global pull.rebase true
 git config --global rebase.autoStash true
+git config --global push.autoSetupRemote true
 
 git config --global init.defaultBranch main
