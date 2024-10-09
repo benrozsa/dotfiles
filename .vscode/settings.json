@@ -1,47 +1,31 @@
 {
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "material-icon-theme",
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
   "editor.fontFamily": "Monaco",
-  "editor.fontSize": 12,
-  "editor.fontWeight": 400,
+  "editor.fontSize": 14,
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
-  "editor.suggestSelection": "first",
-  "editor.linkedEditing": true,
+  "editor.tabCompletion": "on",
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
-    "source.organizeImports": false
+    "source.organizeImports": "explicit"
   },
-  "terminal.integrated.sendKeybindingsToShell": true,
-  "terminal.integrated.tabs.enabled": true,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.showAbbreviationSuggestions": true,
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.showExpandedAbbreviation": "never",
-  "diffEditor.renderSideBySide": false,
-  "diffEditor.ignoreTrimWhitespace": false,
   "git.enableSmartCommit": true,
-  "git.confirmSync": false,
+  "git.autoStash": true,
   "git.autofetch": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "css.validate": false,
-  "[json][jsonc][javascript][typescript][javascriptreact][typescriptreact]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "telemetry.telemetryLevel": "off",
-  "files.exclude": {
-    "**/node_modules/**": true
-  },
-  "githubPullRequests.fileListLayout": "flat"
+  "git.mergeEditor": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.configPath": "/workspace/.prettierrc",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "terminal.integrated.scrollback": 100000,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  }
 }
