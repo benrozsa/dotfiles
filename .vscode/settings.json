@@ -1,31 +1,6 @@
 {
-  "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "material-icon-theme",
   "editor.fontFamily": "Monaco",
   "editor.fontSize": 14,
-  "editor.fontLigatures": true,
-  "editor.minimap.enabled": false,
-  "editor.tabCompletion": "on",
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
-  },
-  "git.enableSmartCommit": true,
-  "git.autoStash": true,
-  "git.autofetch": true,
-  "git.mergeEditor": false,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "prettier.configPath": "/workspace/.prettierrc",
-  "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 1000,
-  "terminal.integrated.scrollback": 100000,
-  "files.watcherExclude": {
-    "**/node_modules/**": true,
-    "**/dist/**": true
-  }
+  "files.autoSave": "afterDelay"
 }

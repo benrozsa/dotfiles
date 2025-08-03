@@ -15,6 +15,6 @@ git config --global init.defaultBranch main
 
 git config --global pull.rebase true
 git config --global rebase.autoStash true
-# git config --global push.default current
-# git config --global push.autoSetupRemote true
+git config --global push.default current
+git config --global push.autoSetupRemote true
 
