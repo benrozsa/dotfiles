@@ -1,57 +1,72 @@
-
-
-syntax on           " Turn on syntax highlighting, or really
-                    " color coding.
-                    " This really helps you spot broken
-                    " syntax as you type.
-
+" Syntax highlighting and colors
+syntax on
 set t_Co=256
-
-" set number          " Show line number for each line
-set wildmenu
-set showcmd
-set nocompatible
 set background=dark
-set backspace=indent,eol,start
-set wrapmargin=8
+
+" Line numbers and movement
+set number               " Line numbers
+set relativenumber       " Relative line numbers – better movement
+set cursorline           " Highlight current line
+set showmatch            " Highlight matching brackets
+
+" Navigation and search
+set showcmd              " Show typed commands
+set wildmenu             " Completion menu
+set incsearch            " Search while typing
+set hlsearch             " Highlight search results
+
+" TAB handling and indentation
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+set smartindent
+
+" Character encoding
 set encoding=utf-8
 
-set showmatch       " Show matches for () [] {}
+" Clipboard support (only if Vim has +clipboard)
+set clipboard=unnamedplus
 
-set autoindent      " Copy indent from current line when
-                    " Starting a new line
+" Improved backspace
+set backspace=indent,eol,start
 
-set tabstop=4       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
+" Wrap margin
+set wrapmargin=8
 
-set shiftwidth=4    " Indents will have a width of 4
+" Disable compatibility
+set nocompatible
+" Mouse support
+set mouse=a
 
-set softtabstop=4   " Sets the number of columns for a TAB
+" Persistent undo
+set undofile
+set undodir=~/.vim/undodir
 
-set expandtab       " Expand TABs to spaces
+" Faster scrolling
+set ttyfast
 
-set ruler           " Show at which column and row
-                    " The cursor is in characters
+" Improved search (case-insensitive, smartcase)
+set ignorecase
+set smartcase
 
-set colorcolumn=80  " Show a red line to maintain standard
-                    " Line length
+" Better colors if supported
+if (has("termguicolors"))
+  set termguicolors
+endif
 
+" Improved status line
+set laststatus=2
+set ruler
 
-                    " Autoformat on F3
-noremap <F3> :Autoformat<CR>
+" Plugin support (if needed)
+filetype plugin indent on
 
+" Useful key mappings
+nnoremap <Space> :nohlsearch<CR>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
 
-set hlsearch        " Highlight search results
-
-" set mouse=a         " Enable mouse scrolling
-
-                    " Load onedark colorscheme from pack/*/opt
-" packadd! onedark.vim
-" colorscheme onedark
-
-                    " Move cursor inside page 
-                    " when scrolling via trackpad
-map <ScrollWheelDown> j
-map <ScrollWheelUp> k
+" Quick exit from insert mode
+inoremap jk <Esc>
