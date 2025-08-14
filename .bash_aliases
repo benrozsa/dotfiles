@@ -36,5 +36,5 @@ alias yt="yarn test"
 
 # Other
 alias grep='grep --color=auto'
-alias vf='vim $(fzf)'     # fájl megnyitása vim-ben kiválasztással
-alias cf='cd $(find . -type d | fzf)'  # könyvtárválasztás
+alias vf='vim $(fzf)'     # file opening with fzf
+alias cf='cd $(find . -type d | fzf)'  # directory changing with fzf
