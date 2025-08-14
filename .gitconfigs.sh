@@ -1,7 +1,7 @@
 #!/bin/bash
 
-git config --global user.name "Bence Rozsa"
-git config --global user.email "robence@gmail.com"
+git config --global user.name "Ben Rozsa"
+git config --global user.email "benrozsame@gmail.com"
 git config --global core.editor vim
 
 git config --global alias.co checkout
