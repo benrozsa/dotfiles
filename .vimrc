@@ -1,72 +1,53 @@
-" Syntax highlighting and colors
-syntax on
-set t_Co=256
-set background=dark
 
-" Line numbers and movement
-set number               " Line numbers
-set relativenumber       " Relative line numbers – better movement
-set cursorline           " Highlight current line
-set showmatch            " Highlight matching brackets
+" --- Syntax ---
+syntax on                  " Enable syntax highlighting
+set background=dark        " Use dark background colors
 
-" Navigation and search
-set showcmd              " Show typed commands
-set wildmenu             " Completion menu
-set incsearch            " Search while typing
-set hlsearch             " Highlight search results
+" --- Line numbers and movement ---
+set number                 " Show absolute line numbers
+set relativenumber         " Show relative line numbers
+set cursorline             " Highlight current line
+set signcolumn=yes         " Always show sign column
+set showmatch              " Highlight matching brackets
 
-" TAB handling and indentation
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set autoindent
-set smartindent
+" --- Navigation and search ---
+set incsearch              " Incremental search
+set hlsearch               " Highlight search results
+set ignorecase             " Case insensitive search
+set smartcase              " Case sensitive if uppercase used
 
-" Character encoding
-set encoding=utf-8
+" --- Indentation ---
+set tabstop=4              " Number of spaces tabs count for
+set shiftwidth=4           " Number of spaces to use for autoindent
+set expandtab              " Use spaces instead of tabs
+set autoindent             " Copy indent from current line
+set smartindent            " Smart autoindenting
+set softtabstop=4          " Number of spaces tabs count for in insert mode
 
-" Clipboard support (only if Vim has +clipboard)
-set clipboard=unnamedplus
+" --- Encoding ---
+set encoding=utf-8         " Use UTF-8 encoding
 
-" Improved backspace
-set backspace=indent,eol,start
+" --- Clipboard support ---
+set clipboard=unnamedplus  " Use system clipboard
 
-" Wrap margin
-set wrapmargin=8
+" --- Improved backspace ---
+set backspace=indent,eol,start  " Make backspace more powerful
 
-" Disable compatibility
-set nocompatible
-" Mouse support
-set mouse=a
+" --- Basic behavior ---
+set nocompatible           " Disable Vi compatibility
+set mouse=a                " Enable mouse support
 
-" Persistent undo
-set undofile
-set undodir=~/.vim/undodir
+" --- Persistent undo ---
+set undofile               " Enable undo file
+set undodir=~/.vim/undodir " Directory for undo files
 
-" Faster scrolling
-set ttyfast
+" --- Status line ---
+set laststatus=2           " Always show status line
+set ruler                  " Show cursor position
 
-" Improved search (case-insensitive, smartcase)
-set ignorecase
-set smartcase
+" --- Filetype detection and smart indent ---
+filetype plugin indent on  " Enable filetype detection and indenting
 
-" Better colors if supported
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" Improved status line
-set laststatus=2
-set ruler
-
-" Plugin support (if needed)
-filetype plugin indent on
-
-" Useful key mappings
-nnoremap <Space> :nohlsearch<CR>
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>a
-
-" Quick exit from insert mode
-inoremap jk <Esc>
+" --- Key mappings ---
+nnoremap <Space> :nohlsearch<CR> " Clear search highlighting with Space
+inoremap jk <Esc>                " jk to escape in insert mode

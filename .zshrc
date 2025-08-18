@@ -1,22 +1,36 @@
+# --- Oh My Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
-
 export EDITOR="vim"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
 ZSH_THEME="robbyrussell"
 
+# --- Dotfiles root (personal default) ---
+export DOTFILES_DIR="${DOTFILES_DIR:-/Users/bencerozsa/Dev/dotfiles}"
+
 plugins=(git zsh-autosuggestions fast-syntax-highlighting zsh-autocomplete)
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# --- PATH ---
+export PATH="$HOME/.local/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# --- FZF (optional) ---
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
+# --- Completion (single init) ---
 zstyle ':completion:*' rehash true
 autoload -Uz compinit && compinit -C
 
-### Aliases (merged from .bash_aliases and previous .zshrc)
+# --- Aliases ---
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
+
+# --- NVM (optional; uncomment if you use Node) ---
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+# --- Pyenv (optional; only if you need multiple Python versions) ---
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
