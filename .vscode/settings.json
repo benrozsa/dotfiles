@@ -1,6 +1,36 @@
 {
-  "editor.fontFamily": "Monaco",
+  // Editor
+  "editor.fontFamily": "Monaco, monospace",
   "editor.fontSize": 14,
+  "editor.tabCompletion": "on",
+  "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
-  "files.autoSave": "afterDelay"
+  // Files
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  // Git
+  "git.enableSmartCommit": true,
+  "git.autoStash": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.mergeEditor": true,
+  // Telemetry
+  "telemetry.telemetryLevel": "off",
+  // Markdown
+  "markdown.validate.enabled": true,
+  // Language-specific formatters (optional)
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mkhl.shfmt"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "explorer.confirmDelete": false,
+  "workbench.colorTheme": "One Dark Pro"
 }

@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "davidanson.vscode-markdownlint",
+        "mkhl.shfmt",
+        "redhat.vscode-yaml",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "zhuangtongfa.material-theme"
+    ]
+}
