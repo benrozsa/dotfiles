@@ -32,5 +32,6 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "explorer.confirmDelete": false,
-  "workbench.colorTheme": "One Dark Pro"
+  "workbench.colorTheme": "One Dark Pro",
+  "explorer.confirmDragAndDrop": false
 }
