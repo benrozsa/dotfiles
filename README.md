@@ -28,6 +28,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
   - `.vimrc` for a clean, minimal Vim setup
   - `.vscode/settings.json` for consistent VS Code behavior
   - `vscode-extensions.txt` listing recommended extensions
+  - `mcp.json` for workspace and project metadata
 
 - **Setup Script**
   - `install.sh` safely symlinks dotfiles into your home directory
@@ -67,7 +68,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - `.vimrc` — Vim configuration
 - `git-config-setup.sh` — Git identity/config setup
 - `.vscode/settings.json` — VS Code settings
-- `vscode-extensions.txt` — list of recommended extensions
+- `mcp.json` — workspace/project metadata and configuration
 - `install.sh` — main setup script
 
 ---
