@@ -1,0 +1,24 @@
+{
+	"inputs": [
+		{
+			"id": "NOTION_TOKEN",
+			"type": "promptString",
+			"description": "Notion API Token (https://www.notion.so/profile/integrations)",
+			"password": true
+		}
+	],
+	"servers": {
+		"notion": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@notionhq/notion-mcp-server@latest"
+			],
+			"env": {
+				"OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer ${input:NOTION_TOKEN}\", \"Notion-Version\": \"2022-06-28\" }"
+			},
+			"gallery": true
+		}
+	}
+}
