@@ -6,6 +6,12 @@
         "redhat.vscode-yaml",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "zhuangtongfa.material-theme"
+        "zhuangtongfa.material-theme",
+        "github.copilot",
+        "github.copilot-chat",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "pkief.material-icon-theme",
+        "tomoki1207.pdf"
     ]
 }
