@@ -33,5 +33,12 @@
   },
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": true
 }
