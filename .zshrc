@@ -19,6 +19,15 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # --- Completion (single init) ---
 zstyle ':completion:*' rehash true
+
+# --- Homebrew zsh completions (Codex, etc.) ---
+# Add Homebrew's site-functions to fpath before compinit so completions load.
+if [ -d /opt/homebrew/share/zsh/site-functions ]; then
+	fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+elif [ -d /usr/local/share/zsh/site-functions ]; then
+	fpath=(/usr/local/share/zsh/site-functions $fpath)
+fi
+
 autoload -Uz compinit && compinit -C
 
 # --- Aliases ---

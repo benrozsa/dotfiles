@@ -1,0 +1,34 @@
+# Codex CLI configuration
+# Working defaults using OpenAI and environment variables.
+# No secrets are stored here.
+
+[providers.openai]
+model = "gpt-4o-mini"           # Default model used by Codex
+api_key_env = "OPENAI_API_KEY"   # Read API key from env var
+# base_url = "https://api.openai.com/v1"  # Override if using a proxy/Azure
+
+[ui]
+preambles = true                  # Show brief preambles before tool calls
+confirmations = "on-request"      # Ask before privileged actions
+
+[workspace]
+default_root = "~"                # Base directory for work
+
+# --- Optional providers (uncomment and configure as needed) ---
+# [providers.anthropic]
+# model = "claude-3-5-sonnet-latest"
+# api_key_env = "ANTHROPIC_API_KEY"
+
+# [providers.openrouter]
+# model = "openai/gpt-4o-mini"
+# api_key_env = "OPENROUTER_API_KEY"
+# base_url = "https://openrouter.ai/api/v1"
+
+# [providers.ollama]
+# model = "qwen2.5-coder:7b"
+# base_url = "http://localhost:11434"
+
+# Tips
+# - Export API keys in your shell profile (e.g., ~/.zshrc):
+#     export OPENAI_API_KEY="..."
+# - Switch the default provider/model in this file as desired.

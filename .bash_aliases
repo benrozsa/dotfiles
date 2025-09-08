@@ -38,3 +38,7 @@ alias yt="yarn test"
 alias grep='grep --color=auto'
 alias vf='vim $(fzf)'                 # file opening with fzf
 alias cf='cd $(find . -type d | fzf)' # directory changing with fzf
+
+# Codex CLI
+# Quick prompt helper: `cx "your question"`
+alias cx='codex'
