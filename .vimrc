@@ -1,4 +1,3 @@
-
 " --- Syntax ---
 syntax on                  " Enable syntax highlighting
 set background=dark        " Use dark background colors

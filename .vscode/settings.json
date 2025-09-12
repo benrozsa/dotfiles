@@ -32,7 +32,7 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "explorer.confirmDelete": false,
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
   "explorer.confirmDragAndDrop": false,
   "github.copilot.enable": {
     "*": true,
