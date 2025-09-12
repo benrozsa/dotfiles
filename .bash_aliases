@@ -1,22 +1,28 @@
-# -- Configs
+# --- Config shortcuts ---
 alias zshconfig="vi ~/.zshrc"
 alias aliasconfig="vi ~/.bash_aliases"
 alias vimconfig="vi ~/.vimrc"
 
-# Shell
+# --- Shell ---
 alias ll='ls -lh'
 alias l='ls -la'
 alias la='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias o='open .'
 alias c="clear && printf '\e[3J'"
 
-# Python
+# Open current dir (macOS vs Linux)
+case "$(uname -s)" in
+  Darwin) alias o='open .' ;;
+  Linux)  alias o='xdg-open .' ;;
+  *)      alias o='xdg-open .' ;;  # fallback
+esac
+
+# --- Python (simple; venvs still override these) ---
 alias python="python3"
 alias pip="pip3"
 
-# Git
+# --- Git ---
 alias gs="git status"
 alias ga="git add ."
 alias gc="git commit -m"
@@ -28,17 +34,22 @@ alias gsp="git stash pop"
 alias gst="git stash"
 alias gpl="git pull --rebase --autostash"
 
-# Yarn
-alias y="yarn"
-alias yd="yarn dev"
-alias yb="yarn build"
-alias yt="yarn test"
+# --- Yarn (only if present) ---
+command -v yarn >/dev/null 2>&1 && {
+  alias y="yarn"
+  alias yd="yarn dev"
+  alias yb="yarn build"
+  alias yt="yarn test"
+}
 
-# Other
+# --- Grep color ---
 alias grep='grep --color=auto'
-alias vf='vim $(fzf)'                 # file opening with fzf
-alias cf='cd $(find . -type d | fzf)' # directory changing with fzf
 
-# Codex CLI
-# Quick prompt helper: `cx "your question"`
-alias cx='codex'
+# --- FZF helpers (safer: handle spaces & cancel) ---
+vf() { command -v fzf >/dev/null || { echo "fzf not installed"; return 1; }
+       local f; f="$(fzf)" || return; [ -n "$f" ] && vim -- "$f"; }
+cf() { command -v fzf >/dev/null || { echo "fzf not installed"; return 1; }
+       local d; d="$(find . -type d -not -path '*/.*' | fzf)" || return; [ -n "$d" ] && cd -- "$d"; }
+
+# --- Codex CLI (only if installed) ---
+command -v codex >/dev/null 2>&1 && alias cx='codex'

@@ -39,9 +39,14 @@ link() {
 }
 
 # --------- Paths ---------
-# Dotfiles root defaults to this script's folder (no hardcoding)
 export DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-CODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+
+# Detect VS Code user settings dir
+case "$(uname -s)" in
+  Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
+  Linux)  CODE_USER_DIR="$HOME/.config/Code/User" ;;
+  *)      CODE_USER_DIR="$HOME/.config/Code/User" ;; # fallback
+esac
 
 # --------- Dotfiles ---------
 info "Symlinking dotfiles to home directory..."
@@ -52,12 +57,15 @@ ok "Dotfiles symlinked."
 
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."
-mkdir -p "$CODE_USER_DIR"
-link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
-link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"
-# If you want recommendations in user dir as well, uncomment:
-# link "$DOTFILES_DIR/.vscode/extensions.json" "$CODE_USER_DIR/extensions.json"
-ok "Editor settings linked."
+if command -v code >/dev/null 2>&1 || [ -d "$CODE_USER_DIR" ]; then
+	mkdir -p "$CODE_USER_DIR"
+	link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
+	link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"
+	# link "$DOTFILES_DIR/.vscode/extensions.json" "$CODE_USER_DIR/extensions.json"
+	ok "Editor settings linked."
+else
+	warn "VS Code not found; skipping Code links."
+fi
 
 # --------- Git Config (optional) ---------
 if [[ -f "$DOTFILES_DIR/git-config-setup.sh" ]]; then
@@ -71,32 +79,34 @@ fi
 
 # --------- Zsh Plugins (Oh My Zsh essentials) ---------
 info "Ensuring Zsh plugins are installed..."
-set +u # allow unset during plugin install
-ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-plugins=(
-	"zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
-	"fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
-	"zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
-)
+if [ -d "$HOME/.oh-my-zsh" ]; then
+	set +u
+	ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+	plugins=(
+		"zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
+		"fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+		"zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
+	)
+	for entry in "${plugins[@]}"; do
+		pname="${entry%%|*}"; purl="${entry#*|}"
+		dest="$ZSH_CUSTOM/plugins/$pname"
+		if [[ -d "$dest/.git" ]]; then
+			info "Updating $pname ..."
+			git -C "$dest" pull --ff-only || warn "Update failed for $pname"
+		elif [[ -d "$dest" ]]; then
+			info "$pname already present (non-git)."
+		else
+			info "Cloning $pname ..."
+			mkdir -p "$(dirname "$dest")"
+			git clone --depth=1 "$purl" "$dest" || warn "Clone failed for $pname"
+		fi
+		ok "$pname ready."
+	done
+	set -u
+else
+	info "Oh My Zsh not found; skipping plugin install."
+fi
 
-for entry in "${plugins[@]}"; do
-	pname="${entry%%|*}"
-	purl="${entry#*|}"
-	dest="$ZSH_CUSTOM/plugins/$pname"
-	if [[ -d "$dest/.git" ]]; then
-		info "Updating $pname ..."
-		git -C "$dest" pull --ff-only || warn "Update failed for $pname"
-	elif [[ -d "$dest" ]]; then
-		info "$pname already present (non-git)."
-	else
-		info "Cloning $pname ..."
-		mkdir -p "$(dirname "$dest")"
-		git clone --depth=1 "$purl" "$dest" || warn "Clone failed for $pname"
-	fi
-	ok "$pname ready."
-
-done
-set -u
 ok "🎉 Setup complete."
 
-info "Open this repo in VS Code and click: Extensions → 'Install All' from workspace recommendations (.vscode/extensions.json)."
+info "Open this repo in VS Code → Extensions → 'Install All' (from .vscode/extensions.json)."
