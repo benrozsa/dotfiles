@@ -13,9 +13,9 @@ alias c="clear && printf '\e[3J'"
 
 # Open current dir (macOS vs Linux)
 case "$(uname -s)" in
-  Darwin) alias o='open .' ;;
-  Linux)  alias o='xdg-open .' ;;
-  *)      alias o='xdg-open .' ;;  # fallback
+Darwin) alias o='open .' ;;
+Linux) alias o='xdg-open .' ;;
+*) alias o='xdg-open .' ;; # fallback
 esac
 
 # --- Python (simple; venvs still override these) ---
@@ -36,20 +36,34 @@ alias gpl="git pull --rebase --autostash"
 
 # --- Yarn (only if present) ---
 command -v yarn >/dev/null 2>&1 && {
-  alias y="yarn"
-  alias yd="yarn dev"
-  alias yb="yarn build"
-  alias yt="yarn test"
+	alias y="yarn"
+	alias yd="yarn dev"
+	alias yb="yarn build"
+	alias yt="yarn test"
 }
 
 # --- Grep color ---
 alias grep='grep --color=auto'
 
 # --- FZF helpers (safer: handle spaces & cancel) ---
-vf() { command -v fzf >/dev/null || { echo "fzf not installed"; return 1; }
-       local f; f="$(fzf)" || return; [ -n "$f" ] && vim -- "$f"; }
-cf() { command -v fzf >/dev/null || { echo "fzf not installed"; return 1; }
-       local d; d="$(find . -type d -not -path '*/.*' | fzf)" || return; [ -n "$d" ] && cd -- "$d"; }
+vf() {
+	command -v fzf >/dev/null || {
+		echo "fzf not installed"
+		return 1
+	}
+	local f
+	f="$(fzf)" || return
+	[ -n "$f" ] && vim -- "$f"
+}
+cf() {
+	command -v fzf >/dev/null || {
+		echo "fzf not installed"
+		return 1
+	}
+	local d
+	d="$(find . -type d -not -path '*/.*' | fzf)" || return
+	[ -n "$d" ] && cd -- "$d"
+}
 
 # --- Codex CLI (only if installed) ---
 command -v codex >/dev/null 2>&1 && alias cx='codex'

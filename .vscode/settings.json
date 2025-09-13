@@ -26,7 +26,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "mkhl.shfmt"
   },
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
@@ -40,5 +40,24 @@
     "markdown": true,
     "scminput": false
   },
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  // Treat common Bash rc files as shellscript for shfmt formatting
+  "files.associations": {
+    ".bashrc": "shellscript",
+    ".bash_profile": "shellscript",
+    ".bash_aliases": "shellscript",
+    ".profile": "shellscript",
+    ".envrc": "shellscript"
+  },
+  // mkhl.shfmt configuration (portable wrapper works on macOS, Fedora, Flatpak)
+  // Use a user-level wrapper so all workspaces pick it up
+  "shfmt.executablePath": "${env:HOME}/.local/bin/shfmtw",
+  // Common shfmt flags: 2-space indent, indent case arms, binary ops at line start, space redirects
+  "shfmt.args": [
+    "-i",
+    "2",
+    "-ci",
+    "-bn",
+    "-sr"
+  ]
 }

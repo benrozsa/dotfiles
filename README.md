@@ -18,7 +18,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
     - sensible defaults (editor, rebase workflow, prune, autosquash)
     - aliases for common commands (`co`, `c`, `st`, `hist`, `lg`, …)
     - global ignore file (`.DS_Store` on macOS, space for Linux ignores too)
-    - cross-platform credential helper (`osxkeychain` on macOS, `store` on Linux)
+    - cross‑platform credential helper (macOS: `osxkeychain`; Linux: `libsecret` if available, else `store`)
 
 - **Editor Configuration**
   - `.vimrc` for a clean, minimal Vim setup (UTF-8, sane defaults, clipboard)
@@ -56,3 +56,20 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
    ```sh
    git clone https://github.com/benrozsa/dotfiles.git ~/Dev/dotfiles
    cd ~/Dev/dotfiles
+   ```
+
+2. **Install (symlink + backups):**
+
+   ```sh
+   ./install.sh
+   ```
+
+   This links your dotfiles, sets up VS Code user settings, and installs/updates core Zsh plugins (if Oh My Zsh is present).
+
+3. **Optional Git setup:** `./git-config-setup.sh` (macOS uses Keychain; Linux prefers libsecret, else store).
+
+4. **VS Code:** Open the repo and install the recommended extensions. Formatting uses a user‑level `shfmt` wrapper at `~/.local/bin/shfmtw` so it works across macOS, Fedora, and Flatpak VS Code.
+
+5. **Extras:** `fzf` enables `vf`/`cf` helpers. See `.bash_aliases` for more.
+
+More implementation details are in `CONTRIBUTING.md`.
