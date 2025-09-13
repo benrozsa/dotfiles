@@ -68,6 +68,8 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 
 3. **Optional Git setup:** `./git-config-setup.sh` (macOS uses Keychain; Linux prefers libsecret, else store).
 
+   Security note (Linux): if `libsecret` is not available, the fallback `credential.helper store` saves credentials in plaintext at `~/.git-credentials`. Prefer installing `libsecret` (e.g., on Fedora: `sudo dnf install libsecret` and `git-credential-libsecret`).
+
 4. **VS Code:** Open the repo and install the recommended extensions. Formatting uses a user‑level `shfmt` wrapper at `~/.local/bin/shfmtw` so it works across macOS, Fedora, and Flatpak VS Code.
 
 5. **Extras:** `fzf` enables `vf`/`cf` helpers. See `.bash_aliases` for more.
