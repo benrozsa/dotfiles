@@ -31,6 +31,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
     - Safely symlinks dotfiles into your home directory
     - Backs up existing files as `.bak` before linking
     - Ensures Zsh plugins are installed/updated
+    - Runs personal Git setup if `git-config-setup.sh` is present
     - Detects platform for VS Code settings path (macOS vs Linux)
 
 ---
@@ -67,9 +68,11 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 
    This links your dotfiles, sets up VS Code user settings, and installs/updates core Zsh plugins (if Oh My Zsh is present).
 
-3. **Optional Git setup:** `./git-config-setup.sh` (macOS uses Keychain; Linux uses libsecret when available).
+3. **Git setup:** Already run by `./install.sh` when `git-config-setup.sh` is present.
 
-   Security note (Linux): if `libsecret` isn't installed, credentials won't be stored. Install `git-credential-libsecret` for secure storage (e.g., `sudo dnf install libsecret` on Fedora).
+   - Re-run manually any time with: `./git-config-setup.sh`
+   - macOS uses Keychain; Linux uses `libsecret` when available.
+   - Security note (Linux): if `libsecret` isn't installed, credentials won't be stored. Install `git-credential-libsecret` (e.g., `sudo dnf install git-credential-libsecret` on Fedora) or build from Git's contrib if needed.
 
 4. **VS Code:** Open the repo and install the recommended extensions. Formatting uses a workspace‑scoped `shfmt` wrapper at `.vscode/bin/shfmt` (portable across macOS, Fedora, and Flatpak VS Code).
 
