@@ -55,6 +55,17 @@ link "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ok "Dotfiles symlinked."
 
+# --------- Fedora Bash (.bashrc) ---------
+if [ -f /etc/os-release ]; then
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  if [ "${ID:-}" = "fedora" ]; then
+    info "Linking Fedora Bash config (~/.bashrc)..."
+    link "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+    ok "Bash config linked for Fedora."
+  fi
+fi
+
 # --------- Vim Undo Dir ---------
 info "Ensuring Vim undo directory exists..."
 mkdir -p "$HOME/.vim/undodir"
