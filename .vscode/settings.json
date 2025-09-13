@@ -41,8 +41,6 @@
     "scminput": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
-  // Only format changed lines on save when supported
-  "editor.formatOnSaveMode": "modificationsIfAvailable",
   // Treat common Bash rc files as shellscript for shfmt formatting
   "files.associations": {
     ".bashrc": "shellscript",
