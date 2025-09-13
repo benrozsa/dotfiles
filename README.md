@@ -43,6 +43,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - [Oh My Zsh](https://ohmyz.sh/)
 - [VS Code](https://code.visualstudio.com/) (with CLI `code` available in `$PATH`)
 - Optional tools:
+  - shfmt (shell formatter) for on-save formatting in VS Code — install via `brew install shfmt` (macOS) or `sudo dnf install shfmt` (Fedora)
   - [fzf](https://github.com/junegunn/fzf) for `vf`/`cf` aliases
   - Yarn if you use the Node.js aliases
   - Codex CLI (`cx`) if installed
