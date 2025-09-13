@@ -43,9 +43,9 @@ export DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Detect VS Code user settings dir
 case "$(uname -s)" in
-  Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
-  Linux) CODE_USER_DIR="$HOME/.config/Code/User" ;;
-  *) CODE_USER_DIR="$HOME/.config/Code/User" ;; # fallback
+Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
+Linux) CODE_USER_DIR="$HOME/.config/Code/User" ;;
+*) CODE_USER_DIR="$HOME/.config/Code/User" ;; # fallback
 esac
 
 # --------- Dotfiles ---------
@@ -73,7 +73,7 @@ ok "Vim undo dir ready."
 
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."
-if command -v code > /dev/null 2>&1 || [ -d "$CODE_USER_DIR" ]; then
+if command -v code >/dev/null 2>&1 || [ -d "$CODE_USER_DIR" ]; then
   mkdir -p "$CODE_USER_DIR"
   link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
   link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"

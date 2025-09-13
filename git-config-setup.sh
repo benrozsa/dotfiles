@@ -12,17 +12,17 @@ git config --global init.defaultBranch main
 
 # --- Credential storage ---
 case "$(uname -s)" in
-  Darwin)
-    git config --global credential.helper osxkeychain
-    ;;
-  Linux)
-    # Prefer libsecret if available; fall back to store
-    if command -v git-credential-libsecret > /dev/null 2>&1; then
-      git config --global credential.helper libsecret
-    else
-      git config --global credential.helper store
-    fi
-    ;;
+Darwin)
+  git config --global credential.helper osxkeychain
+  ;;
+Linux)
+  # Prefer libsecret if available; fall back to store
+  if command -v git-credential-libsecret >/dev/null 2>&1; then
+    git config --global credential.helper libsecret
+  else
+    git config --global credential.helper store
+  fi
+  ;;
 esac
 
 # --- Fetch / Push behavior ---
@@ -44,7 +44,7 @@ GIG="$HOME/.gitignore_global"
 if [[ ! -f "$GIG" ]]; then
   touch "$GIG"
 fi
-grep -qxF ".DS_Store" "$GIG" || echo ".DS_Store" >> "$GIG"
+grep -qxF ".DS_Store" "$GIG" || echo ".DS_Store" >>"$GIG"
 git config --global core.excludesfile "$GIG"
 
 # --- Aliases ---
