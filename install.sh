@@ -43,9 +43,9 @@ export DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Detect VS Code user settings dir
 case "$(uname -s)" in
-  Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
-  Linux)  CODE_USER_DIR="$HOME/.config/Code/User" ;;
-  *)      CODE_USER_DIR="$HOME/.config/Code/User" ;; # fallback
+Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
+Linux) CODE_USER_DIR="$HOME/.config/Code/User" ;;
+*) CODE_USER_DIR="$HOME/.config/Code/User" ;; # fallback
 esac
 
 # --------- Dotfiles ---------
@@ -57,13 +57,13 @@ ok "Dotfiles symlinked."
 
 # --------- Fedora Bash (.bashrc) ---------
 if [ -f /etc/os-release ]; then
-  # shellcheck disable=SC1091
-  . /etc/os-release
-  if [ "${ID:-}" = "fedora" ]; then
-    info "Linking Fedora Bash config (~/.bashrc)..."
-    link "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
-    ok "Bash config linked for Fedora."
-  fi
+	# shellcheck disable=SC1091
+	. /etc/os-release
+	if [ "${ID:-}" = "fedora" ]; then
+		info "Linking Fedora Bash config (~/.bashrc)..."
+		link "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+		ok "Bash config linked for Fedora."
+	fi
 fi
 
 # --------- Vim Undo Dir ---------
@@ -83,11 +83,9 @@ else
 	warn "VS Code not found; skipping Code links."
 fi
 
-# --------- shfmt Wrapper (user-level) ---------
-info "Ensuring shfmt wrapper is available at \"$HOME/.local/bin/shfmtw\"..."
-mkdir -p "$HOME/.local/bin"
-link "$DOTFILES_DIR/.vscode/bin/shfmt" "$HOME/.local/bin/shfmtw"
-ok "shfmt wrapper linked to ~/.local/bin/shfmtw"
+# --------- shfmt Wrapper (workspace-scoped) ---------
+# VS Code now uses the workspace wrapper at .vscode/bin/shfmt directly.
+# No user-level symlink is required.
 
 # --------- Git Config (optional) ---------
 if [[ -f "$DOTFILES_DIR/git-config-setup.sh" ]]; then
@@ -110,7 +108,8 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
 		"zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
 	)
 	for entry in "${plugins[@]}"; do
-		pname="${entry%%|*}"; purl="${entry#*|}"
+		pname="${entry%%|*}"
+		purl="${entry#*|}"
 		dest="$ZSH_CUSTOM/plugins/$pname"
 		if [[ -d "$dest/.git" ]]; then
 			info "Updating $pname ..."

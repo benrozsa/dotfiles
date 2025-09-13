@@ -49,9 +49,9 @@
     ".profile": "shellscript",
     ".envrc": "shellscript"
   },
-  // mkhl.shfmt configuration (portable wrapper works on macOS, Fedora, Flatpak)
-  // Use a user-level wrapper so all workspaces pick it up
-  "shfmt.executablePath": "${env:HOME}/.local/bin/shfmtw",
+  // mkhl.shfmt configuration — use workspace wrapper for portability
+  // This avoids relying on a user-level wrapper path
+  "shfmt.executablePath": "${workspaceFolder}/.vscode/bin/shfmt",
   // Common shfmt flags: 2-space indent, indent case arms, binary ops at line start, space redirects
   "shfmt.args": [
     "-i",
