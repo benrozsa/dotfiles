@@ -18,7 +18,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
     - sensible defaults (editor, rebase workflow, prune, autosquash)
     - aliases for common commands (`co`, `c`, `st`, `hist`, `lg`, …)
     - global ignore file (`.DS_Store` on macOS, space for Linux ignores too)
-    - cross‑platform credential helper (macOS: `osxkeychain`; Linux: `libsecret` if available, else `store`)
+    - cross‑platform credential helper (macOS: `osxkeychain`; Linux: `libsecret` if available)
 
 - **Editor Configuration**
   - `.vimrc` for a clean, minimal Vim setup (UTF-8, sane defaults, clipboard)
@@ -67,9 +67,9 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 
    This links your dotfiles, sets up VS Code user settings, and installs/updates core Zsh plugins (if Oh My Zsh is present).
 
-3. **Optional Git setup:** `./git-config-setup.sh` (macOS uses Keychain; Linux prefers libsecret, else store).
+3. **Optional Git setup:** `./git-config-setup.sh` (macOS uses Keychain; Linux uses libsecret when available).
 
-   Security note (Linux): if `libsecret` is not available, the fallback `credential.helper store` saves credentials in plaintext at `~/.git-credentials`. Prefer installing `libsecret` (e.g., on Fedora: `sudo dnf install libsecret` and `git-credential-libsecret`).
+   Security note (Linux): if `libsecret` isn't installed, credentials won't be stored. Install `git-credential-libsecret` for secure storage (e.g., `sudo dnf install libsecret` on Fedora).
 
 4. **VS Code:** Open the repo and install the recommended extensions. Formatting uses a workspace‑scoped `shfmt` wrapper at `.vscode/bin/shfmt` (portable across macOS, Fedora, and Flatpak VS Code).
 

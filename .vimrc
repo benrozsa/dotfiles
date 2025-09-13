@@ -37,6 +37,9 @@ set nocompatible           " Disable Vi compatibility
 set mouse=a                " Enable mouse support
 
 " --- Persistent undo ---
+if ! isdirectory(expand("~/.vim/undodir"))
+  call mkdir(expand("~/.vim/undodir"), "p", 0700)
+endif
 set undofile               " Enable undo file
 set undodir=~/.vim/undodir " Directory for undo files
 

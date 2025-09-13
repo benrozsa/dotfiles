@@ -7,45 +7,45 @@ ok() { log "✅ $*"; }
 warn() { log "⚠️  $*"; }
 info() { log "ℹ️  $*"; }
 
-trap 'warn "Script failed at line $LINENO"' ERR
+trap 'echo "⚠️  Failed at line $LINENO"; exit 1' ERR
 
 # --------- Helpers ---------
+have() { command -v "$1" >/dev/null 2>&1; }
+need() { have "$1" || { echo "Missing: $1"; exit 1; }; }
+
 backup() {
-  local tgt="$1"
-  if [[ (-e "$tgt" || -L "$tgt") && ! -e "$tgt.bak" && ! -L "$tgt.bak" ]]; then
-    mv -f "$tgt" "$tgt.bak"
-    warn "Backed up $tgt → $tgt.bak"
+  local tgt="$1" bak="${tgt}.bak"
+  if [[ -e "$tgt" || -L "$tgt" ]]; then
+    if [[ ! -e "$bak" && ! -L "$bak" ]]; then
+      mv -f -- "$tgt" "$bak"
+      warn "Backed up $tgt -> $bak"
+    else
+      warn "Backup exists, skipping: $bak"
+    fi
   fi
 }
 
 link() {
   local src="$1" tgt="$2"
-  if [[ ! -e "$src" ]]; then
-    warn "Source missing, skip link: $src → $tgt"
-    return 0
-  fi
-  local dir
-  dir="$(dirname "$tgt")"
-  mkdir -p "$dir"
-
+  [[ -e "$src" || -L "$src" ]] || { warn "Skip (missing src): $src"; return 0; }
+  mkdir -p -- "$(dirname "$tgt")"
   if [[ -L "$tgt" && "$(readlink "$tgt")" == "$src" ]]; then
-    ok "Already linked: $tgt → $src"
+    ok "Already linked: $tgt -> $src"
     return 0
   fi
-
   backup "$tgt"
-  ln -sfn "$src" "$tgt"
-  ok "Linked: $tgt → $src"
+  ln -sfn -- "$src" "$tgt"
+  ok "Linked: $tgt -> $src"
 }
 
 # --------- Paths ---------
-export DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+export DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 
 # Detect VS Code user settings dir
 case "$(uname -s)" in
-Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
-Linux) CODE_USER_DIR="$HOME/.config/Code/User" ;;
-*) CODE_USER_DIR="$HOME/.config/Code/User" ;; # fallback
+  Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
+  Linux)  CODE_USER_DIR="$HOME/.config/Code/User" ;;
+  *)      CODE_USER_DIR="$HOME/.config/Code/User" ;;
 esac
 
 # --------- Dotfiles ---------
@@ -68,17 +68,21 @@ fi
 
 # --------- Vim Undo Dir ---------
 info "Ensuring Vim undo directory exists..."
-mkdir -p "$HOME/.vim/undodir"
+mkdir -p -- "$HOME/.vim/undodir"
 ok "Vim undo dir ready."
 
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."
-if command -v code >/dev/null 2>&1 || [ -d "$CODE_USER_DIR" ]; then
-  mkdir -p "$CODE_USER_DIR"
+if have code || [ -d "$CODE_USER_DIR" ]; then
+  mkdir -p -- "$CODE_USER_DIR"
   link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
   link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"
-  # link "$DOTFILES_DIR/.vscode/extensions.json" "$CODE_USER_DIR/extensions.json"
   ok "Editor settings linked."
+  if [[ -f "$DOTFILES_DIR/.vscode/vscode-extensions.txt" ]]; then
+    while IFS= read -r ext; do
+      [[ -n "$ext" && "$ext" != \#* ]] && code --install-extension "$ext" || true
+    done < "$DOTFILES_DIR/.vscode/vscode-extensions.txt"
+  fi
 else
   warn "VS Code not found; skipping Code links."
 fi
@@ -99,33 +103,28 @@ fi
 
 # --------- Zsh Plugins (Oh My Zsh essentials) ---------
 info "Ensuring Zsh plugins are installed..."
-if [ -d "$HOME/.oh-my-zsh" ]; then
-  set +u
-  ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+if [[ ! -d "${ZSH_CUSTOM%/}/.." ]]; then
+  info "Oh My Zsh not found. Install: https://ohmyz.sh"
+else
+  need git
   plugins=(
     "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
     "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
     "zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
   )
   for entry in "${plugins[@]}"; do
-    pname="${entry%%|*}"
-    purl="${entry#*|}"
-    dest="$ZSH_CUSTOM/plugins/$pname"
+    name="${entry%%|*}"; url="${entry#*|}"
+    dest="$ZSH_CUSTOM/plugins/$name"
     if [[ -d "$dest/.git" ]]; then
-      info "Updating $pname ..."
-      git -C "$dest" pull --ff-only || warn "Update failed for $pname"
-    elif [[ -d "$dest" ]]; then
-      info "$pname already present (non-git)."
+      git -C "$dest" fetch --depth=1 origin main || git -C "$dest" fetch --depth=1
+      git -C "$dest" reset --hard FETCH_HEAD || true
     else
-      info "Cloning $pname ..."
-      mkdir -p "$(dirname "$dest")"
-      git clone --depth=1 "$purl" "$dest" || warn "Clone failed for $pname"
+      mkdir -p -- "$(dirname "$dest")"
+      git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
     fi
-    ok "$pname ready."
+    ok "$name ready"
   done
-  set -u
-else
-  info "Oh My Zsh not found; skipping plugin install."
 fi
 
 ok "🎉 Setup complete."
