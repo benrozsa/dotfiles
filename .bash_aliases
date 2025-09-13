@@ -42,8 +42,12 @@ command -v yarn >/dev/null 2>&1 && {
 	alias yt="yarn test"
 }
 
-# --- Grep color ---
-alias grep='grep --color=auto'
+# --- Grep color (GNU or Homebrew coreutils on macOS) ---
+if grep --version 2>/dev/null | grep -q GNU; then
+  alias grep='grep --color=auto'
+elif command -v ggrep >/dev/null 2>&1; then
+  alias grep='ggrep --color=auto'
+fi
 
 # --- FZF helpers (safer: handle spaces & cancel) ---
 vf() {
@@ -53,7 +57,7 @@ vf() {
 	}
 	local f
 	f="$(fzf)" || return
-	[ -n "$f" ] && vim -- "$f"
+    [ -n "$f" ] && "${EDITOR:-vim}" -- "$f"
 }
 cf() {
 	command -v fzf >/dev/null || {
