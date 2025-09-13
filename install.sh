@@ -55,6 +55,11 @@ link "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ok "Dotfiles symlinked."
 
+# --------- Vim Undo Dir ---------
+info "Ensuring Vim undo directory exists..."
+mkdir -p "$HOME/.vim/undodir"
+ok "Vim undo dir ready."
+
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."
 if command -v code >/dev/null 2>&1 || [ -d "$CODE_USER_DIR" ]; then
