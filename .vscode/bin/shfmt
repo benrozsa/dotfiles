@@ -10,12 +10,12 @@ set -euo pipefail
 SANITIZED=()
 for a in "$@"; do
   case "$a" in
-    -apply-ignore|--apply-ignore)
-      # ignore this flag
-      ;;
-    *)
-      SANITIZED+=("$a")
-      ;;
+  -apply-ignore | --apply-ignore)
+    # ignore this flag
+    ;;
+  *)
+    SANITIZED+=("$a")
+    ;;
   esac
 done
 set -- "${SANITIZED[@]}"
