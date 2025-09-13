@@ -20,16 +20,27 @@ for a in "$@"; do
 done
 set -- "${SANITIZED[@]}"
 
-# Prefer host shfmt when running inside Flatpak
-if command -v flatpak-spawn >/dev/null 2>&1; then
-  if flatpak-spawn --host shfmt -version >/dev/null 2>&1; then
-    exec flatpak-spawn --host shfmt "$@"
+# Prefer host shfmt only when actually inside Flatpak
+if [ -f "/.flatpak-info" ] || [ -n "${FLATPAK_ID:-}" ]; then
+  if command -v flatpak-spawn >/dev/null 2>&1; then
+    if flatpak-spawn --host shfmt -version >/dev/null 2>&1; then
+      exec flatpak-spawn --host shfmt "$@"
+    fi
   fi
 fi
 
 # PATH
 if command -v shfmt >/dev/null 2>&1; then
   exec "$(command -v shfmt)" "$@"
+fi
+
+# Go install location (e.g., `go install mvdan.cc/sh/v3/cmd/shfmt@latest`)
+if command -v go >/dev/null 2>&1; then
+  GOPATH_DIR="${GOPATH:-$(go env GOPATH 2>/dev/null || echo "$HOME/go") }"
+  GOPATH_DIR="${GOPATH_DIR%/}"
+  if [ -x "$GOPATH_DIR/bin/shfmt" ]; then
+    exec "$GOPATH_DIR/bin/shfmt" "$@"
+  fi
 fi
 
 # Homebrew installs (try specific formula prefix first)
@@ -55,5 +66,5 @@ for candidate in /usr/bin/shfmt /usr/local/bin/shfmt; do
   [ -x "$candidate" ] && exec "$candidate" "$@"
 done
 
-echo "shfmt not found. Install with 'brew install shfmt' (macOS) or 'sudo dnf install shfmt' (Fedora). Ensure VS Code can access it." >&2
+echo "shfmt not found. Install via 'brew install shfmt' (macOS), 'sudo dnf install shfmt' (Fedora), or 'go install mvdan.cc/sh/v3/cmd/shfmt@latest'. Ensure VS Code can access it." >&2
 exit 127

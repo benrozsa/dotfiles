@@ -117,11 +117,23 @@ else
     name="${entry%%|*}"; url="${entry#*|}"
     dest="$ZSH_CUSTOM/plugins/$name"
     if [[ -d "$dest/.git" ]]; then
-      git -C "$dest" fetch --depth=1 origin main || git -C "$dest" fetch --depth=1
+      # Determine remote default branch (avoid noisy failures on repos using master)
+      default_branch="$(git -C "$dest" symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | awk -F/ '{print $2}')"
+      if [[ -z "$default_branch" ]]; then
+        default_branch="$(git -C "$dest" remote show origin 2>/dev/null | sed -n 's/.*HEAD branch: //p')"
+      fi
+      [[ -z "$default_branch" ]] && default_branch=main
+      git -C "$dest" fetch --prune --depth=1 origin "$default_branch" || git -C "$dest" fetch --prune --depth=1 origin
       git -C "$dest" reset --hard FETCH_HEAD || true
     else
       mkdir -p -- "$(dirname "$dest")"
-      git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
+      # Clone the remote's default branch if detectable; fall back to default
+      db="$(git ls-remote --symref "$url" HEAD 2>/dev/null | awk '/^ref:/ {print $3}' | sed 's!.*/!!')"
+      if [[ -n "$db" ]]; then
+        git clone --depth=1 --branch "$db" "$url" "$dest" || git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
+      else
+        git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
+      fi
     fi
     ok "$name ready"
   done
