@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Portable shfmt wrapper for VS Code (mkhl.shfmt)
+# - Works on macOS (Homebrew), Linux (Fedora), and Flatpak VS Code
+
+set -euo pipefail
+
+# Prefer host shfmt when running inside Flatpak
+if command -v flatpak-spawn >/dev/null 2>&1; then
+  if flatpak-spawn --host shfmt -version >/dev/null 2>&1; then
+    exec flatpak-spawn --host shfmt "$@"
+  fi
+fi
+
+# PATH
+if command -v shfmt >/dev/null 2>&1; then
+  exec "$(command -v shfmt)" "$@"
+fi
+
+# Homebrew installs (try specific formula prefix first)
+if command -v brew >/dev/null 2>&1; then
+  if SHFMT_PREFIX=$(brew --prefix shfmt 2>/dev/null); then
+    if [ -x "$SHFMT_PREFIX/bin/shfmt" ]; then
+      exec "$SHFMT_PREFIX/bin/shfmt" "$@"
+    fi
+  fi
+  BREW_PREFIX=$(brew --prefix 2>/dev/null || true)
+  for candidate in \
+    "$BREW_PREFIX/bin/shfmt" \
+    "/opt/homebrew/bin/shfmt" \
+    "/usr/local/bin/shfmt"; do
+    if [ -x "$candidate" ]; then
+      exec "$candidate" "$@"
+    fi
+  done
+fi
+
+# Common Linux locations
+for candidate in /usr/bin/shfmt /usr/local/bin/shfmt; do
+  [ -x "$candidate" ] && exec "$candidate" "$@"
+done
+
+echo "shfmt not found. Install with 'brew install shfmt' (macOS) or 'sudo dnf install shfmt' (Fedora). Ensure VS Code can access it." >&2
+exit 127

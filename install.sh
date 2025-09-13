@@ -72,6 +72,12 @@ else
 	warn "VS Code not found; skipping Code links."
 fi
 
+# --------- shfmt Wrapper (user-level) ---------
+info "Ensuring shfmt wrapper is available at \"$HOME/.local/bin/shfmtw\"..."
+mkdir -p "$HOME/.local/bin"
+link "$DOTFILES_DIR/.vscode/bin/shfmt" "$HOME/.local/bin/shfmtw"
+ok "shfmt wrapper linked to ~/.local/bin/shfmtw"
+
 # --------- Git Config (optional) ---------
 if [[ -f "$DOTFILES_DIR/git-config-setup.sh" ]]; then
 	chmod +x "$DOTFILES_DIR/git-config-setup.sh" || true
