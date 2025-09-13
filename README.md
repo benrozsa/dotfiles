@@ -23,7 +23,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - **Editor Configuration**
   - `.vimrc` for a clean, minimal Vim setup (UTF-8, sane defaults, clipboard)
   - `.vscode/settings.json` for consistent VS Code behavior
-  - `vscode-extensions.txt` listing recommended extensions
+  - `.vscode/extensions.json` listing recommended extensions
   - `mcp.json` for workspace/project metadata
 
 - **Setup Script**

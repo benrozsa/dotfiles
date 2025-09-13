@@ -11,7 +11,7 @@ export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/Dev/dotfiles}"
 
 # --- Plugins ---
 plugins=(git zsh-autosuggestions fast-syntax-highlighting zsh-autocomplete)
-source "$ZSH/oh-my-zsh.sh"
+[ -s "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # --- PATH ---
 export PATH="$HOME/.local/bin:$PATH"
