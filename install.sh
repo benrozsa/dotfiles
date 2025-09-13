@@ -7,41 +7,46 @@ ok() { log "✅ $*"; }
 warn() { log "⚠️  $*"; }
 info() { log "ℹ️  $*"; }
 
-trap 'warn "Script failed at line $LINENO"' ERR
+trap 'echo "⚠️  Failed at line $LINENO"; exit 1' ERR
 
 # --------- Helpers ---------
+have() { command -v "$1" >/dev/null 2>&1; }
+need() { have "$1" || { echo "Missing: $1"; exit 1; }; }
+
 backup() {
-	local tgt="$1"
-	if [[ (-e "$tgt" || -L "$tgt") && ! -e "$tgt.bak" && ! -L "$tgt.bak" ]]; then
-		mv -f "$tgt" "$tgt.bak"
-		warn "Backed up $tgt → $tgt.bak"
-	fi
+  local tgt="$1" bak="${tgt}.bak"
+  if [[ -e "$tgt" || -L "$tgt" ]]; then
+    if [[ ! -e "$bak" && ! -L "$bak" ]]; then
+      mv -f -- "$tgt" "$bak"
+      warn "Backed up $tgt -> $bak"
+    else
+      warn "Backup exists, skipping: $bak"
+    fi
+  fi
 }
 
 link() {
-	local src="$1" tgt="$2"
-	if [[ ! -e "$src" ]]; then
-		warn "Source missing, skip link: $src → $tgt"
-		return 0
-	fi
-	local dir
-	dir="$(dirname "$tgt")"
-	mkdir -p "$dir"
-
-	if [[ -L "$tgt" && "$(readlink "$tgt")" == "$src" ]]; then
-		ok "Already linked: $tgt → $src"
-		return 0
-	fi
-
-	backup "$tgt"
-	ln -sfn "$src" "$tgt"
-	ok "Linked: $tgt → $src"
+  local src="$1" tgt="$2"
+  [[ -e "$src" || -L "$src" ]] || { warn "Skip (missing src): $src"; return 0; }
+  mkdir -p -- "$(dirname "$tgt")"
+  if [[ -L "$tgt" && "$(readlink "$tgt")" == "$src" ]]; then
+    ok "Already linked: $tgt -> $src"
+    return 0
+  fi
+  backup "$tgt"
+  ln -sfn -- "$src" "$tgt"
+  ok "Linked: $tgt -> $src"
 }
 
 # --------- Paths ---------
-# Dotfiles root defaults to this script's folder (no hardcoding)
-export DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-CODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+export DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+
+# Detect VS Code user settings dir
+case "$(uname -s)" in
+  Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
+  Linux)  CODE_USER_DIR="$HOME/.config/Code/User" ;;
+  *)      CODE_USER_DIR="$HOME/.config/Code/User" ;;
+esac
 
 # --------- Dotfiles ---------
 info "Symlinking dotfiles to home directory..."
@@ -50,53 +55,90 @@ link "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ok "Dotfiles symlinked."
 
+# --------- Fedora Bash (.bashrc) ---------
+if [ -f /etc/os-release ]; then
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  if [ "${ID:-}" = "fedora" ]; then
+    info "Linking Fedora Bash config (~/.bashrc)..."
+    link "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+    ok "Bash config linked for Fedora."
+  fi
+fi
+
+# --------- Vim Undo Dir ---------
+info "Ensuring Vim undo directory exists..."
+mkdir -p -- "$HOME/.vim/undodir"
+ok "Vim undo dir ready."
+
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."
-mkdir -p "$CODE_USER_DIR"
-link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
-link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"
-# If you want recommendations in user dir as well, uncomment:
-# link "$DOTFILES_DIR/.vscode/extensions.json" "$CODE_USER_DIR/extensions.json"
-ok "Editor settings linked."
+if have code || [ -d "$CODE_USER_DIR" ]; then
+  mkdir -p -- "$CODE_USER_DIR"
+  link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
+  link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"
+  ok "Editor settings linked."
+  if [[ -f "$DOTFILES_DIR/.vscode/vscode-extensions.txt" ]]; then
+    while IFS= read -r ext; do
+      [[ -n "$ext" && "$ext" != \#* ]] && code --install-extension "$ext" || true
+    done < "$DOTFILES_DIR/.vscode/vscode-extensions.txt"
+  fi
+else
+  warn "VS Code not found; skipping Code links."
+fi
+
+# --------- shfmt Wrapper (workspace-scoped) ---------
+# VS Code now uses the workspace wrapper at .vscode/bin/shfmt directly.
+# No user-level symlink is required.
 
 # --------- Git Config (optional) ---------
 if [[ -f "$DOTFILES_DIR/git-config-setup.sh" ]]; then
-	chmod +x "$DOTFILES_DIR/git-config-setup.sh" || true
-	info "Running personal Git configuration setup..."
-	"$DOTFILES_DIR/git-config-setup.sh"
-	ok "Git configuration applied."
+  chmod +x "$DOTFILES_DIR/git-config-setup.sh" || true
+  info "Running personal Git configuration setup..."
+  "$DOTFILES_DIR/git-config-setup.sh"
+  ok "Git configuration applied."
 else
-	info "git-config-setup.sh not found; skipping."
+  info "git-config-setup.sh not found; skipping."
 fi
 
 # --------- Zsh Plugins (Oh My Zsh essentials) ---------
 info "Ensuring Zsh plugins are installed..."
-set +u # allow unset during plugin install
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-plugins=(
-	"zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
-	"fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
-	"zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
-)
+if [[ ! -d "${ZSH_CUSTOM%/}/.." ]]; then
+  info "Oh My Zsh not found. Install: https://ohmyz.sh"
+else
+  need git
+  plugins=(
+    "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
+    "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+    "zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
+  )
+  for entry in "${plugins[@]}"; do
+    name="${entry%%|*}"; url="${entry#*|}"
+    dest="$ZSH_CUSTOM/plugins/$name"
+    if [[ -d "$dest/.git" ]]; then
+      # Determine remote default branch (avoid noisy failures on repos using master)
+      default_branch="$(git -C "$dest" symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | awk -F/ '{print $2}')"
+      if [[ -z "$default_branch" ]]; then
+        default_branch="$(git -C "$dest" remote show origin 2>/dev/null | sed -n 's/.*HEAD branch: //p')"
+      fi
+      [[ -z "$default_branch" ]] && default_branch=main
+      git -C "$dest" fetch --prune --depth=1 origin "$default_branch" || git -C "$dest" fetch --prune --depth=1 origin
+      git -C "$dest" reset --hard FETCH_HEAD || true
+    else
+      mkdir -p -- "$(dirname "$dest")"
+      # Clone the remote's default branch if detectable; fall back to default
+      db="$(git ls-remote --symref "$url" HEAD 2>/dev/null | awk '/^ref:/ {print $3}' | sed 's!.*/!!')"
+      if [[ -n "$db" ]]; then
+        git clone --depth=1 --branch "$db" "$url" "$dest" || git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
+      else
+        git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
+      fi
+    fi
+    ok "$name ready"
+  done
+fi
 
-for entry in "${plugins[@]}"; do
-	pname="${entry%%|*}"
-	purl="${entry#*|}"
-	dest="$ZSH_CUSTOM/plugins/$pname"
-	if [[ -d "$dest/.git" ]]; then
-		info "Updating $pname ..."
-		git -C "$dest" pull --ff-only || warn "Update failed for $pname"
-	elif [[ -d "$dest" ]]; then
-		info "$pname already present (non-git)."
-	else
-		info "Cloning $pname ..."
-		mkdir -p "$(dirname "$dest")"
-		git clone --depth=1 "$purl" "$dest" || warn "Clone failed for $pname"
-	fi
-	ok "$pname ready."
-
-done
-set -u
 ok "🎉 Setup complete."
 
-info "Open this repo in VS Code and click: Extensions → 'Install All' from workspace recommendations (.vscode/extensions.json)."
+info "Open this repo in VS Code → Extensions → 'Install All' (from .vscode/extensions.json)."
