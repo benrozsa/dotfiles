@@ -5,6 +5,21 @@
 
 set -euo pipefail
 
+# Sanitize args: some VS Code setups/extensions pass flags not supported by shfmt.
+# Drop unknown flags like '-apply-ignore'/'--apply-ignore' to avoid failing.
+SANITIZED=()
+for a in "$@"; do
+  case "$a" in
+    -apply-ignore|--apply-ignore)
+      # ignore this flag
+      ;;
+    *)
+      SANITIZED+=("$a")
+      ;;
+  esac
+done
+set -- "${SANITIZED[@]}"
+
 # Prefer host shfmt when running inside Flatpak
 if command -v flatpak-spawn >/dev/null 2>&1; then
   if flatpak-spawn --host shfmt -version >/dev/null 2>&1; then
