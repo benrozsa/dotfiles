@@ -3,20 +3,23 @@ alias zshconfig="vi ~/.zshrc"
 alias aliasconfig="vi ~/.bash_aliases"
 alias vimconfig="vi ~/.vimrc"
 
-# --- Shell ---
-alias ll='ls -lh'
+if ls --version >/dev/null 2>&1; then
+  alias ll='ls -lh --group-directories-first --color=auto'
+  alias la='ls -lah --group-directories-first --color=auto'
+else
+  alias ll='ls -lhG'
+  alias la='ls -lahG'
+fi
 alias l='ls -la'
-alias la='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias c="clear && printf '\e[3J'"
 
-# Open current dir (macOS vs Linux)
-case "$(uname -s)" in
-Darwin) alias o='open .' ;;
-Linux) alias o='xdg-open .' ;;
-*) alias o='xdg-open .' ;; # fallback
-esac
+if command -v open >/dev/null 2>&1; then
+  alias o='open .'
+elif command -v xdg-open >/dev/null 2>&1; then
+  alias o='xdg-open . >/dev/null 2>&1 &'
+fi
 
 # --- Python (simple; venvs still override these) ---
 alias python="python3"
@@ -57,7 +60,7 @@ vf() {
   }
   local f
   f="$(fzf)" || return
-  [ -n "$f" ] && "${EDITOR:-vim}" -- "$f"
+  [ -n "$f" ] && vim -- "$f"
 }
 cf() {
   command -v fzf >/dev/null || {

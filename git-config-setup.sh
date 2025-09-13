@@ -16,11 +16,10 @@ Darwin)
   git config --global credential.helper osxkeychain
   ;;
 Linux)
-  # Prefer libsecret if available; fall back to store
   if command -v git-credential-libsecret >/dev/null 2>&1; then
     git config --global credential.helper libsecret
   else
-    git config --global credential.helper store
+    echo "Note: consider installing 'git-credential-libsecret' for secure storage"
   fi
   ;;
 esac
