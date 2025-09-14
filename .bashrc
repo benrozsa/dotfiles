@@ -18,3 +18,11 @@ export PATH
 if [ -f "$HOME/.bash_aliases" ]; then
   . "$HOME/.bash_aliases"
 fi
+
+# Go tools bin on PATH (for tools installed via `go install`, e.g., shfmt)
+# Ensures editor tooling is available across repos without per-workspace wrappers
+GOPATH_DIR="${GOPATH:-$HOME/go}"
+if [ -d "$GOPATH_DIR/bin" ]; then
+  case ":$PATH:" in *":$GOPATH_DIR/bin:"*) ;; *) PATH="$GOPATH_DIR/bin:$PATH" ;; esac
+  export PATH
+fi
