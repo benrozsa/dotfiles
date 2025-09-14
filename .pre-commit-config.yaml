@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 4.3.0
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        language: system
+        types: [shell]
+      - id: shfmt
+        name: shfmt
+        language: system
+        types: [shell]
+        args: ["-i", "2", "-ci", "-bn", "-sr"]
