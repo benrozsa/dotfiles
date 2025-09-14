@@ -1,0 +1,33 @@
+---
+name: Yamllint
+
+'on':
+  pull_request:
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run yamllint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          format: github
+          strict: false
+          file_or_dir: .
