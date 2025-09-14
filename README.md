@@ -68,8 +68,6 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 
    ```sh
    ./install.sh
-   # or preview changes without modifying your system:
-   ./install.sh --dry-run
    ```
 
    This links your dotfiles, sets up VS Code user settings, and installs/updates core Zsh plugins (if Oh My Zsh is present).
