@@ -49,9 +49,9 @@
     ".profile": "shellscript",
     ".envrc": "shellscript"
   },
-  // mkhl.shfmt configuration — use workspace wrapper for portability
-  // This avoids relying on a user-level wrapper path
-  "shfmt.executablePath": "${workspaceFolder}/.vscode/bin/shfmt",
+  // Use shfmt from PATH; no workspace wrapper required
+  // Ensure ~/go/bin (or $GOBIN) is on PATH on Fedora/macOS
+  "shfmt.executablePath": "shfmt",
   // Common shfmt flags: 2-space indent, indent case arms, binary ops at line start, space redirects
   "shfmt.args": [
     "-i",
