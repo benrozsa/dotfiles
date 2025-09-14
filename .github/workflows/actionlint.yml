@@ -10,6 +10,9 @@ name: Actionlint
     paths:
       - '.github/workflows/**'
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -21,4 +24,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run actionlint
-        uses: rhysd/actionlint@v1.7.0
+        uses: rhysd/actionlint@v1

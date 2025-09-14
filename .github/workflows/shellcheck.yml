@@ -5,6 +5,8 @@ name: ShellCheck
   pull_request:
     paths:
       - '**/*.sh'
+      - '**/*.bash'
+      - '**/*.zsh'
       - '**/.bashrc'
       - '**/.bash_aliases'
       - '**/.zshrc'
@@ -13,10 +15,15 @@ name: ShellCheck
     branches: [main]
     paths:
       - '**/*.sh'
+      - '**/*.bash'
+      - '**/*.zsh'
       - '**/.bashrc'
       - '**/.bash_aliases'
       - '**/.zshrc'
       - '**/.profile'
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -29,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@2.0.0
+        uses: ludeeus/action-shellcheck@v2
         with:
           severity: error
           check_together: true
