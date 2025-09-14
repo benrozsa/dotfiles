@@ -1,3 +1,4 @@
+---
 name: Bug report
 description: Report a problem to help us improve
 labels: [bug]
@@ -35,4 +36,3 @@ body:
       label: Logs / Screenshots
       description: Paste errors or attach screenshots
       render: shell
-

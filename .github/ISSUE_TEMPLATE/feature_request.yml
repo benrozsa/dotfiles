@@ -1,3 +1,4 @@
+---
 name: Feature request
 description: Suggest an idea or improvement
 labels: [enhancement]
@@ -28,4 +29,3 @@ body:
     attributes:
       label: Additional context
       description: Links, prior art, screenshots
-
