@@ -3,24 +3,8 @@ name: ShellCheck
 
 'on':
   pull_request:
-    paths:
-      - '**/*.sh'
-      - '**/*.bash'
-      - '**/*.zsh'
-      - '**/.bashrc'
-      - '**/.bash_aliases'
-      - '**/.zshrc'
-      - '**/.profile'
   push:
     branches: [main]
-    paths:
-      - '**/*.sh'
-      - '**/*.bash'
-      - '**/*.zsh'
-      - '**/.bashrc'
-      - '**/.bash_aliases'
-      - '**/.zshrc'
-      - '**/.profile'
 
 permissions:
   contents: read
