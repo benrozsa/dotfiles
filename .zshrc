@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # --- Oh My Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="vim"
