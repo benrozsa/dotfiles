@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # --- Config shortcuts ---
 alias zshconfig="vi ~/.zshrc"
 alias aliasconfig="vi ~/.bash_aliases"
