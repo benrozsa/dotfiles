@@ -26,3 +26,10 @@ if [ -d "$GOPATH_DIR/bin" ]; then
   case ":$PATH:" in *":$GOPATH_DIR/bin:"*) ;; *) PATH="$GOPATH_DIR/bin:$PATH" ;; esac
   export PATH
 fi
+
+# fnm
+FNM_PATH="/home/brozsa/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
