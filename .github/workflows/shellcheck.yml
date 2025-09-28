@@ -35,9 +35,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@v2
-        with:
-          severity: error
-          check_together: true
-          path: .
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(git ls-files \
+            '**/*.sh' \
+            '**/*.bash' \
+            '**/*.zsh' \
+            '**/.bashrc' \
+            '**/.bash_aliases' \
+            '**/.zshrc' \
+            '**/.profile')
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No shell files to check."
+            exit 0
+          fi
+          echo "Checking ${#files[@]} file(s) with ShellCheck..."
+          shellcheck -S error -x "${files[@]}"
