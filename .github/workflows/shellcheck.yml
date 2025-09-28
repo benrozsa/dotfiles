@@ -27,14 +27,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -t files < <(git ls-files \
-            '**/*.sh' \
-            '**/*.bash' \
-            '**/*.zsh' \
-            '**/.bashrc' \
-            '**/.bash_aliases' \
-            '**/.zshrc' \
-            '**/.profile')
+          mapfile -t files < <(git ls-files -- \
+            ':(glob)**/*.sh' \
+            ':(glob)**/*.bash' \
+            ':(glob)**/*.zsh' \
+            ':(glob)**/.bashrc' \
+            ':(glob)**/.bash_aliases' \
+            ':(glob)**/.zshrc' \
+            ':(glob)**/.profile')
           if [ "${#files[@]}" -eq 0 ]; then
             echo "No shell files to check."
             exit 0

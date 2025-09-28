@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Minimal Fedora-focused Bash config
 
 # Source global definitions (present on Fedora)
