@@ -1,10 +1,6 @@
 # shellcheck shell=bash
 # ~/.zshrc — interactive zsh config. Env/PATH lives in ~/.zshenv.
 
-# --- Prompt ---
-# Starship if installed; otherwise leave the default prompt.
-command -v starship >/dev/null && eval "$(starship init zsh)"
-
 # --- Plugins (no framework; clone directly into ~/.zsh/plugins) ---
 for p in zsh-autosuggestions fast-syntax-highlighting; do
   src="$HOME/.zsh/plugins/$p/$p.zsh"
@@ -34,9 +30,16 @@ zstyle ':completion:*' rehash true
 # --- Aliases ---
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
-# --- nvm (sourced here, not in .zshenv, to keep non-interactive shell startup cheap) ---
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+# --- nvm (lazy: sourcing nvm.sh on every shell costs ~600ms; defer to first use) ---
+_nvm_lazy() {
+  unset -f nvm node npm npx yarn 2>/dev/null
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  # bash_completion.d/nvm is bash-only — sourcing it in zsh prints `zle` setopt errors.
+}
+for _c in nvm node npm npx yarn; do
+  eval "${_c}() { _nvm_lazy; ${_c} \"\$@\"; }"
+done
+unset _c
 
 # --- pyenv (interactive completion + rehash hooks; shims are on PATH via .zshenv) ---
 command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
