@@ -1,29 +1,23 @@
 # shellcheck shell=bash
-# --- Oh My Zsh ---
-export ZSH="$HOME/.oh-my-zsh"
-export EDITOR="vim"
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-ZSH_THEME="robbyrussell"
+# ~/.zshrc — interactive zsh config. Env/PATH lives in ~/.zshenv.
 
-# --- Dotfiles root (portable default) ---
-# macOS default was hardcoded; now it falls back to ~/Dev/dotfiles on Linux
-export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/Dev/dotfiles}"
+# --- Prompt ---
+# Starship if installed; otherwise leave the default prompt.
+command -v starship >/dev/null && eval "$(starship init zsh)"
 
-# --- Plugins ---
-plugins=(git zsh-autosuggestions fast-syntax-highlighting zsh-autocomplete)
-[ -s "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
+# --- Plugins (no framework; clone directly into ~/.zsh/plugins) ---
+for p in zsh-autosuggestions fast-syntax-highlighting; do
+  src="$HOME/.zsh/plugins/$p/$p.zsh"
+  [ -f "$src" ] && source "$src"
+done
 
-# --- PATH ---
-export PATH="$HOME/.local/bin:$PATH"
+# --- History ---
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE INC_APPEND_HISTORY
 
-# --- FZF (optional) ---
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-
-# --- Completion (single init) ---
-zstyle ':completion:*' rehash true
-
-# --- Homebrew zsh completions (macOS only) ---
+# --- Homebrew zsh completions (macOS) ---
 if [[ "$OSTYPE" == darwin* ]]; then
   if [ -d /opt/homebrew/share/zsh/site-functions ]; then
     fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
@@ -32,18 +26,26 @@ if [[ "$OSTYPE" == darwin* ]]; then
   fi
 fi
 
+# --- Completion ---
+# -C skips the insecure-dir check; brew/pyenv dirs are 755 by design.
 autoload -Uz compinit && compinit -C
+zstyle ':completion:*' rehash true
 
 # --- Aliases ---
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
-# --- NVM (optional) ---
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+# --- nvm (sourced here, not in .zshenv, to keep non-interactive shell startup cheap) ---
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# --- Pyenv (optional) ---
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
+# --- pyenv (interactive completion + rehash hooks; shims are on PATH via .zshenv) ---
+command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
+
+# --- FZF integration ---
+if command -v fzf >/dev/null; then
+  if [[ -d /opt/homebrew/opt/fzf ]]; then
+    source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+    source /opt/homebrew/opt/fzf/shell/completion.zsh
+  fi
+  [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+fi
