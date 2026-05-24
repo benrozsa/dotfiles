@@ -53,6 +53,7 @@ info "Symlinking dotfiles to home directory..."
 link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 link "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 link "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
+link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ok "Dotfiles symlinked."
 
 # --------- Fedora Bash (.bashrc) ---------
@@ -65,6 +66,9 @@ if [ -f /etc/os-release ]; then
     ok "Bash config linked for Fedora."
   fi
 fi
+
+# --------- Vim Undo Dir ---------
+mkdir -p -- "$HOME/.vim/undodir"
 
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."

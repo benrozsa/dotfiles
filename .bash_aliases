@@ -1,7 +1,8 @@
 # shellcheck shell=bash
 # --- Config shortcuts ---
-alias zshconfig="${EDITOR:-nano} ~/.zshrc"
-alias aliasconfig="${EDITOR:-nano} ~/.bash_aliases"
+alias zshconfig="${EDITOR:-vim} ~/.zshrc"
+alias aliasconfig="${EDITOR:-vim} ~/.bash_aliases"
+alias vimconfig="${EDITOR:-vim} ~/.vimrc"
 
 if ls --version >/dev/null 2>&1; then
   alias ll='ls -lh --group-directories-first --color=auto'
@@ -48,7 +49,7 @@ vf() {
   }
   local f
   f="$(fzf)" || return
-  [ -n "$f" ] && ${EDITOR:-nano} -- "$f"
+  [ -n "$f" ] && ${EDITOR:-vim} -- "$f"
 }
 cf() {
   command -v fzf >/dev/null || {

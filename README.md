@@ -5,7 +5,7 @@
 [![Actionlint](https://github.com/benrozsa/dotfiles/actions/workflows/actionlint.yml/badge.svg)](https://github.com/benrozsa/dotfiles/actions/workflows/actionlint.yml)
 
 Personal configuration files for macOS **and** Linux (tested on Fedora Workstation).  
-Provides a simple, repeatable setup for shell, Git, and VS Code.
+Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 
 ---
 
@@ -27,6 +27,7 @@ Provides a simple, repeatable setup for shell, Git, and VS Code.
     - cross‑platform credential helper (macOS: `osxkeychain`; Linux: `libsecret` if available)
 
 - **Editor Configuration**
+  - `.vimrc` — minimal, no plugins: line numbers, search, indentation, system clipboard, persistent undo, `jk`→Esc
   - `.vscode/settings.json` for consistent VS Code behavior
   - `.vscode/extensions.json` listing recommended extensions
   - `mcp.json` for workspace/project metadata
@@ -45,6 +46,7 @@ Provides a simple, repeatable setup for shell, Git, and VS Code.
 
 - **macOS** or **Fedora/Linux**
 - Git
+- Vim
 - [VS Code](https://code.visualstudio.com/) (with CLI `code` available in `$PATH`)
 - Optional tools:
   - shfmt (shell formatter) for on-save formatting in VS Code — install via `brew install shfmt` (macOS) or `sudo dnf install shfmt` (Fedora)
