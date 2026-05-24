@@ -51,6 +51,7 @@ esac
 # --------- Dotfiles ---------
 info "Symlinking dotfiles to home directory..."
 link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+link "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 link "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ok "Dotfiles symlinked."
@@ -101,43 +102,26 @@ else
   info "git-config-setup.sh not found; skipping."
 fi
 
-# --------- Zsh Plugins (Oh My Zsh essentials) ---------
+# --------- Zsh Plugins (framework-free; cloned into ~/.zsh/plugins) ---------
 info "Ensuring Zsh plugins are installed..."
-ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-if [[ ! -d "${ZSH_CUSTOM%/}/.." ]]; then
-  info "Oh My Zsh not found. Install: https://ohmyz.sh"
-else
-  need git
-  plugins=(
-    "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
-    "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
-    "zsh-autocomplete|https://github.com/marlonrichert/zsh-autocomplete.git"
-  )
-  for entry in "${plugins[@]}"; do
-    name="${entry%%|*}"; url="${entry#*|}"
-    dest="$ZSH_CUSTOM/plugins/$name"
-    if [[ -d "$dest/.git" ]]; then
-      # Determine remote default branch (avoid noisy failures on repos using master)
-      default_branch="$(git -C "$dest" symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | awk -F/ '{print $2}')"
-      if [[ -z "$default_branch" ]]; then
-        default_branch="$(git -C "$dest" remote show origin 2>/dev/null | sed -n 's/.*HEAD branch: //p')"
-      fi
-      [[ -z "$default_branch" ]] && default_branch=main
-      git -C "$dest" fetch --prune --depth=1 origin "$default_branch" || git -C "$dest" fetch --prune --depth=1 origin
-      git -C "$dest" reset --hard FETCH_HEAD || true
-    else
-      mkdir -p -- "$(dirname "$dest")"
-      # Clone the remote's default branch if detectable; fall back to default
-      db="$(git ls-remote --symref "$url" HEAD 2>/dev/null | awk '/^ref:/ {print $3}' | sed 's!.*/!!')"
-      if [[ -n "$db" ]]; then
-        git clone --depth=1 --branch "$db" "$url" "$dest" || git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
-      else
-        git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
-      fi
-    fi
-    ok "$name ready"
-  done
-fi
+need git
+PLUGIN_DIR="$HOME/.zsh/plugins"
+mkdir -p -- "$PLUGIN_DIR"
+plugins=(
+  "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions.git"
+  "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+)
+for entry in "${plugins[@]}"; do
+  name="${entry%%|*}"; url="${entry#*|}"
+  dest="$PLUGIN_DIR/$name"
+  if [[ -d "$dest/.git" ]]; then
+    git -C "$dest" fetch --prune --depth=1 origin || true
+    git -C "$dest" reset --hard FETCH_HEAD || true
+  else
+    git clone --depth=1 "$url" "$dest" || echo "Clone failed: $name"
+  fi
+  ok "$name ready"
+done
 
 ok "🎉 Setup complete."
 

@@ -12,7 +12,9 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 ## Features
 
 - **Shell Configuration**
-  - `.zshrc` with [Oh My Zsh](https://ohmyz.sh/), plugins, and environment variables
+  - `.zshenv` for PATH/env — loaded by every shell, including non-interactive subshells (AI agents, scripts)
+  - `.zshrc` for interactive setup — framework-free; plugins cloned directly into `~/.zsh/plugins`
+  - Optional [Starship](https://starship.rs) prompt (auto-detected)
   - `.bash_aliases` with handy shortcuts (portable across macOS/Linux)
   - Portable `open` alias → `open .` on macOS, `xdg-open .` on Linux
 
@@ -45,9 +47,9 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - **macOS** or **Fedora/Linux**
 - Git
 - Vim
-- [Oh My Zsh](https://ohmyz.sh/)
 - [VS Code](https://code.visualstudio.com/) (with CLI `code` available in `$PATH`)
 - Optional tools:
+  - [Starship](https://starship.rs) prompt — `brew install starship` (macOS) or `cargo install starship` / package manager (Linux)
   - shfmt (shell formatter) for on-save formatting in VS Code — install via `brew install shfmt` (macOS) or `sudo dnf install shfmt` (Fedora)
   - [fzf](https://github.com/junegunn/fzf) for `vf`/`cf` aliases
   - Yarn if you use the Node.js aliases
@@ -70,7 +72,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
    ./install.sh
    ```
 
-   This links your dotfiles, sets up VS Code user settings, and installs/updates core Zsh plugins (if Oh My Zsh is present).
+   This links your dotfiles, sets up VS Code user settings, and clones the Zsh plugins into `~/.zsh/plugins`.
 
 3. **Git setup:** Already run by `./install.sh` when `git-config-setup.sh` is present.
 
