@@ -27,7 +27,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
     - cross‑platform credential helper (macOS: `osxkeychain`; Linux: `libsecret` if available)
 
 - **Editor Configuration**
-  - `.vimrc` for a clean, minimal Vim setup (UTF-8, sane defaults, clipboard)
+  - `.vimrc` — minimal, no plugins: line numbers, search, indentation, system clipboard, persistent undo, `jk`→Esc
   - `.vscode/settings.json` for consistent VS Code behavior
   - `.vscode/extensions.json` listing recommended extensions
   - `mcp.json` for workspace/project metadata
@@ -49,11 +49,8 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - Vim
 - [VS Code](https://code.visualstudio.com/) (with CLI `code` available in `$PATH`)
 - Optional tools:
-  - [Starship](https://starship.rs) prompt — `brew install starship` (macOS) or `cargo install starship` / package manager (Linux)
   - shfmt (shell formatter) for on-save formatting in VS Code — install via `brew install shfmt` (macOS) or `sudo dnf install shfmt` (Fedora)
   - [fzf](https://github.com/junegunn/fzf) for `vf`/`cf` aliases
-  - Yarn if you use the Node.js aliases
-  - Codex CLI (`cx`) if installed
 
 ---
 

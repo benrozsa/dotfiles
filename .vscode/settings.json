@@ -34,13 +34,6 @@
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro Night Flat",
   "explorer.confirmDragAndDrop": false,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
-  },
-  "github.copilot.nextEditSuggestions.enabled": true,
   // Treat common Bash rc files as shellscript for shfmt formatting
   "files.associations": {
     ".bashrc": "shellscript",
