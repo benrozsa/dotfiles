@@ -2,7 +2,7 @@
 # ~/.zshenv — sourced for every shell (interactive, scripts, AI agent subshells).
 # PATH and env vars belong here so non-interactive callers see them.
 
-export EDITOR="vim"
+export EDITOR="nano"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 

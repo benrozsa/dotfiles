@@ -53,7 +53,6 @@ info "Symlinking dotfiles to home directory..."
 link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 link "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 link "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
-link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ok "Dotfiles symlinked."
 
 # --------- Fedora Bash (.bashrc) ---------
@@ -67,11 +66,6 @@ if [ -f /etc/os-release ]; then
   fi
 fi
 
-# --------- Vim Undo Dir ---------
-info "Ensuring Vim undo directory exists..."
-mkdir -p -- "$HOME/.vim/undodir"
-ok "Vim undo dir ready."
-
 # --------- VS Code Settings ---------
 info "Symlinking VS Code settings..."
 if have code || [ -d "$CODE_USER_DIR" ]; then
@@ -79,18 +73,14 @@ if have code || [ -d "$CODE_USER_DIR" ]; then
   link "$DOTFILES_DIR/.vscode/settings.json" "$CODE_USER_DIR/settings.json"
   link "$DOTFILES_DIR/.vscode/mcp.json" "$CODE_USER_DIR/mcp.json"
   ok "Editor settings linked."
-  if [[ -f "$DOTFILES_DIR/.vscode/vscode-extensions.txt" ]]; then
-    while IFS= read -r ext; do
-      [[ -n "$ext" && "$ext" != \#* ]] && code --install-extension "$ext" || true
-    done < "$DOTFILES_DIR/.vscode/vscode-extensions.txt"
+  if have code && have jq && [[ -f "$DOTFILES_DIR/.vscode/extensions.json" ]]; then
+    jq -r '.recommendations[]?' "$DOTFILES_DIR/.vscode/extensions.json" | while IFS= read -r ext; do
+      [[ -n "$ext" ]] && code --install-extension "$ext" || true
+    done
   fi
 else
   warn "VS Code not found; skipping Code links."
 fi
-
-# --------- shfmt Wrapper (workspace-scoped) ---------
-# VS Code now uses the workspace wrapper at .vscode/bin/shfmt directly.
-# No user-level symlink is required.
 
 # --------- Git Config (optional) ---------
 if [[ -f "$DOTFILES_DIR/git-config-setup.sh" ]]; then

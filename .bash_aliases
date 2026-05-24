@@ -1,8 +1,7 @@
 # shellcheck shell=bash
 # --- Config shortcuts ---
-alias zshconfig="vi ~/.zshrc"
-alias aliasconfig="vi ~/.bash_aliases"
-alias vimconfig="vi ~/.vimrc"
+alias zshconfig="${EDITOR:-nano} ~/.zshrc"
+alias aliasconfig="${EDITOR:-nano} ~/.bash_aliases"
 
 if ls --version >/dev/null 2>&1; then
   alias ll='ls -lh --group-directories-first --color=auto'
@@ -22,10 +21,6 @@ elif command -v xdg-open >/dev/null 2>&1; then
   alias o='xdg-open . >/dev/null 2>&1 &'
 fi
 
-# --- Python (simple; venvs still override these) ---
-alias python="python3"
-alias pip="pip3"
-
 # --- Git ---
 alias gs="git status"
 alias ga="git add ."
@@ -37,14 +32,6 @@ alias gf="git fetch"
 alias gsp="git stash pop"
 alias gst="git stash"
 alias gpl="git pull --rebase --autostash"
-
-# --- Yarn (only if present) ---
-command -v yarn >/dev/null 2>&1 && {
-  alias y="yarn"
-  alias yd="yarn dev"
-  alias yb="yarn build"
-  alias yt="yarn test"
-}
 
 # --- Grep color (GNU or Homebrew coreutils on macOS) ---
 if grep --version 2>/dev/null | grep -q GNU; then
@@ -61,7 +48,7 @@ vf() {
   }
   local f
   f="$(fzf)" || return
-  [ -n "$f" ] && vim -- "$f"
+  [ -n "$f" ] && ${EDITOR:-nano} -- "$f"
 }
 cf() {
   command -v fzf >/dev/null || {
@@ -72,6 +59,3 @@ cf() {
   d="$(find . -type d -not -path '*/.*' | fzf)" || return
   [ -n "$d" ] && cd -- "$d"
 }
-
-# --- Codex CLI (only if installed) ---
-command -v codex >/dev/null 2>&1 && alias cx='codex'
