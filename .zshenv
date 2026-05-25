@@ -17,9 +17,6 @@ fi
 # --- User local bins ---
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
-# --- nvm (path only; nvm.sh is sourced in .zshrc to keep script-launch cheap) ---
-export NVM_DIR="$HOME/.nvm"
-
 # --- pyenv (shims on PATH so non-interactive `python` resolves correctly) ---
 export PYENV_ROOT="$HOME/.pyenv"
 [ -d "$PYENV_ROOT/bin" ] && export PATH="$PYENV_ROOT/bin:$PATH"

@@ -14,7 +14,6 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - **Shell Configuration**
   - `.zshenv` for PATH/env — loaded by every shell, including non-interactive subshells (AI agents, scripts)
   - `.zshrc` for interactive setup — framework-free; plugins cloned directly into `~/.zsh/plugins`
-  - Optional [Starship](https://starship.rs) prompt (auto-detected)
   - `.bash_aliases` with handy shortcuts (portable across macOS/Linux)
   - Portable `open` alias → `open .` on macOS, `xdg-open .` on Linux
 
