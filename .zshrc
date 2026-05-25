@@ -30,11 +30,6 @@ for p in zsh-autosuggestions fast-syntax-highlighting; do
   done
 done
 
-# --- less (wheel-driven paging in iTerm2) ---
-# -R keeps color escapes; --mouse + --wheel-lines makes less consume wheel events
-# itself and scroll N lines per tick, bypassing iTerm2's linear wheel→arrow path.
-export LESS='-R --mouse --wheel-lines=5'
-
 # --- Aliases ---
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 

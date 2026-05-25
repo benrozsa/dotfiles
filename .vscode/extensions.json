@@ -1,9 +1,5 @@
 {
   "recommendations": [
-    "editorconfig.editorconfig",
-    "davidanson.vscode-markdownlint",
-    "mkhl.shfmt",
-    "redhat.vscode-yaml",
     "zhuangtongfa.material-theme"
   ]
 }

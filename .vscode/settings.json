@@ -4,7 +4,6 @@
   "editor.fontSize": 14,
   "editor.tabCompletion": "on",
   "editor.minimap.enabled": false,
-  "editor.formatOnSave": true,
   // Files
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
@@ -16,41 +15,16 @@
   "git.mergeEditor": true,
   // Telemetry
   "telemetry.telemetryLevel": "off",
-  // Markdown
-  "markdown.validate.enabled": true,
-  // Language-specific formatters (optional)
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "mkhl.shfmt"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  },
-  "explorer.confirmDelete": false,
+  // Theme
   "workbench.colorTheme": "One Dark Pro Night Flat",
+  "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  // Treat common Bash rc files as shellscript for shfmt formatting
+  // Treat common Bash rc files as shellscript (syntax highlighting only)
   "files.associations": {
     ".bashrc": "shellscript",
     ".bash_profile": "shellscript",
     ".bash_aliases": "shellscript",
     ".profile": "shellscript",
     ".envrc": "shellscript"
-  },
-  // Use shfmt from PATH; no workspace wrapper required
-  // Ensure ~/go/bin (or $GOBIN) is on PATH on Fedora/macOS
-  "shfmt.executablePath": "shfmt",
-  // Common shfmt flags: 2-space indent, indent case arms, binary ops at line start, space redirects
-  "shfmt.args": [
-    "-i",
-    "2",
-    "-ci",
-    "-bn",
-    "-sr"
-  ]
+  }
 }

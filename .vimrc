@@ -35,12 +35,6 @@ set backspace=indent,eol,start  " Make backspace more powerful
 " --- Basic behavior ---
 set nocompatible           " Disable Vi compatibility
 set mouse=a                " Enable mouse support
-if has('mouse_sgr')
-  set ttymouse=sgr         " Modern mouse protocol (better than xterm2)
-endif
-if exists('+mousescroll')
-  set mousescroll=ver:5,hor:3  " Lines per wheel tick (Vim 9+)
-endif
 
 " --- Persistent undo ---
 if ! isdirectory(expand("~/.vim/undodir"))
