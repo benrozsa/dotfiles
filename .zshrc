@@ -41,8 +41,15 @@ export LESS='-R --mouse --wheel-lines=5'
 # --- fnm (fast Rust-based Node version manager; auto-switches on `cd` via .nvmrc/.node-version) ---
 command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
 
-# --- pyenv (interactive completion + rehash hooks; shims are on PATH via .zshenv) ---
-command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
+# --- pyenv (lazy: `pyenv init` costs ~50-100ms; shims on PATH already make
+# python/pip/etc work, so we only need init when invoking `pyenv` itself). ---
+if command -v pyenv >/dev/null; then
+  pyenv() {
+    unset -f pyenv
+    eval "$(command pyenv init - zsh)"
+    pyenv "$@"
+  }
+fi
 
 # --- FZF integration ---
 if command -v fzf >/dev/null; then
