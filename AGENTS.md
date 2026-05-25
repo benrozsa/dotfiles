@@ -13,8 +13,7 @@ These are persistent, repo-local instructions for AI assistants and automation w
 ## Commits & Releases
 
 - Conventional Commits for titles: `type(scope): summary` (feat, fix, docs, ci, chore, refactor, test, build, perf, revert).
-- Update `CHANGELOG.md` as the canonical source for release notes.
-- For releases: create short GitHub Release highlights and link to the matching changelog section.
+- The commit log is the canonical change history; no separate `CHANGELOG.md` is maintained.
 - Use SemVer-lite during 0.x (patch=docs/CI/meta; minor=features; major=breaking).
 
 ## CI & Quality
@@ -26,7 +25,7 @@ These are persistent, repo-local instructions for AI assistants and automation w
 ## Documentation
 
 - Keep README concise: quick start, requirements, revert path, platform notes.
-- Use CONTRIBUTING for deeper details (formatting, CI, release process).
+- Use CONTRIBUTING for deeper details (formatting, CI).
 - Prefer clarity over cleverness; reflect actual behavior (e.g., PATH-based shfmt vs wrapper).
 
 ## Scope Discipline

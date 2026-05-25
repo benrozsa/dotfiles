@@ -19,7 +19,7 @@ This repo aims to stay simple for users. Detailed setup notes for contributors l
 ## Fedora / Linux Notes
 
 - `~/.local/bin` is used for user‑level binaries; no sudo required.
-- `git-config-setup.sh` prefers `libsecret`; falls back to `store` for credentials.
+- `git-config-setup.sh` uses `libsecret` for credentials when available; otherwise prints a note and leaves `credential.helper` unset (no plaintext fallback).
 
 ## macOS Notes
 

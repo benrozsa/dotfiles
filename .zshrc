@@ -1,12 +1,6 @@
 # shellcheck shell=bash
 # ~/.zshrc — interactive zsh config. Env/PATH lives in ~/.zshenv.
 
-# --- Plugins (no framework; clone directly into ~/.zsh/plugins) ---
-for p in zsh-autosuggestions fast-syntax-highlighting; do
-  src="$HOME/.zsh/plugins/$p/$p.zsh"
-  [ -f "$src" ] && source "$src"
-done
-
 # --- History ---
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
@@ -27,22 +21,30 @@ fi
 autoload -Uz compinit && compinit -C
 zstyle ':completion:*' rehash true
 
+# --- Plugins (no framework; clone directly into ~/.zsh/plugins) ---
+# Loaded after compinit per upstream guidance (fast-syntax-highlighting hooks ZLE widgets).
+# Prefer $name.plugin.zsh (standard convention); fall back to $name.zsh.
+for p in zsh-autosuggestions fast-syntax-highlighting; do
+  for src in "$HOME/.zsh/plugins/$p/$p.plugin.zsh" "$HOME/.zsh/plugins/$p/$p.zsh"; do
+    [ -f "$src" ] && { source "$src"; break; }
+  done
+done
+
 # --- Aliases ---
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
-# --- nvm (lazy: sourcing nvm.sh on every shell costs ~600ms; defer to first use) ---
-_nvm_lazy() {
-  unset -f nvm node npm npx yarn 2>/dev/null
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  # bash_completion.d/nvm is bash-only — sourcing it in zsh prints `zle` setopt errors.
-}
-for _c in nvm node npm npx yarn; do
-  eval "${_c}() { _nvm_lazy; ${_c} \"\$@\"; }"
-done
-unset _c
+# --- fnm (fast Rust-based Node version manager; auto-switches on `cd` via .nvmrc/.node-version) ---
+command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
 
-# --- pyenv (interactive completion + rehash hooks; shims are on PATH via .zshenv) ---
-command -v pyenv >/dev/null && eval "$(pyenv init - zsh)"
+# --- pyenv (lazy: `pyenv init` costs ~50-100ms; shims on PATH already make
+# python/pip/etc work, so we only need init when invoking `pyenv` itself). ---
+if command -v pyenv >/dev/null; then
+  pyenv() {
+    unset -f pyenv
+    eval "$(command pyenv init - zsh)"
+    pyenv "$@"
+  }
+fi
 
 # --- FZF integration ---
 if command -v fzf >/dev/null; then

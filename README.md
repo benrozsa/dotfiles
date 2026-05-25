@@ -14,7 +14,6 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - **Shell Configuration**
   - `.zshenv` for PATH/env — loaded by every shell, including non-interactive subshells (AI agents, scripts)
   - `.zshrc` for interactive setup — framework-free; plugins cloned directly into `~/.zsh/plugins`
-  - Optional [Starship](https://starship.rs) prompt (auto-detected)
   - `.bash_aliases` with handy shortcuts (portable across macOS/Linux)
   - Portable `open` alias → `open .` on macOS, `xdg-open .` on Linux
 
@@ -77,7 +76,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
    - macOS uses Keychain; Linux uses `libsecret` when available.
    - Security note (Linux): if `libsecret` isn't installed, credentials won't be stored. Install `git-credential-libsecret` (e.g., `sudo dnf install git-credential-libsecret` on Fedora) or build from Git's contrib if needed.
 
-4. **VS Code:** Open the repo and install the recommended extensions. Formatting uses `shfmt` from your PATH. Ensure it’s installed (e.g., `brew install shfmt` on macOS or `sudo dnf install shfmt` on Fedora). Optional: if you need Flatpak/macOS/Linux portability, the repo includes a wrapper at `.vscode/bin/shfmt` — point `"shfmt.executablePath"` to it if required.
+4. **VS Code:** Open the repo and install the recommended extensions. Formatting uses `shfmt` from your PATH. Ensure it’s installed (e.g., `brew install shfmt` on macOS or `sudo dnf install shfmt` on Fedora).
 
 5. **Extras:** `fzf` enables `vf`/`cf` helpers. See `.bash_aliases` for more.
 
