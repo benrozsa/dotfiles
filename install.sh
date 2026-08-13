@@ -41,12 +41,28 @@ link() {
 # --------- Paths ---------
 export DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 
+# Detect OS
+OS_TYPE="$(uname -s)"
+
 # Detect VS Code user settings dir
-case "$(uname -s)" in
+case "$OS_TYPE" in
   Darwin) CODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
   Linux)  CODE_USER_DIR="$HOME/.config/Code/User" ;;
   *)      CODE_USER_DIR="$HOME/.config/Code/User" ;;
 esac
+
+# --------- Homebrew Bundle (macOS only) ---------
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+  if have brew; then
+    if [[ -f "$DOTFILES_DIR/Brewfile" ]]; then
+      info "Found Brewfile. Running brew bundle to install/update packages..."
+      brew bundle --file="$DOTFILES_DIR/Brewfile" --no-lock || warn "Some Homebrew bundle installs failed or skipped."
+      ok "Homebrew bundle applied."
+    fi
+  else
+    warn "Homebrew is not installed. Skip installing Brewfile."
+  fi
+fi
 
 # --------- Dotfiles ---------
 info "Symlinking dotfiles to home directory..."
@@ -116,6 +132,16 @@ for entry in "${plugins[@]}"; do
   fi
   ok "$name ready"
 done
+
+# --------- RTK (Rust Token Killer) Setup ---------
+if have rtk; then
+  info "RTK is installed. Initializing global hook to reduce AI agent token usage..."
+  # Run rtk init globally in non-interactive / auto-patch mode if possible
+  rtk init -g --auto-patch || rtk init -g || warn "RTK initialization finished with warnings or skipped."
+  ok "RTK auto-rewrite hook set up."
+else
+  info "RTK not found; skipping hook setup. Install with: brew install rtk"
+fi
 
 ok "🎉 Setup complete."
 
