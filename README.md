@@ -4,13 +4,17 @@
 [![Yamllint](https://github.com/benrozsa/dotfiles/actions/workflows/yamllint.yml/badge.svg)](https://github.com/benrozsa/dotfiles/actions/workflows/yamllint.yml)
 [![Actionlint](https://github.com/benrozsa/dotfiles/actions/workflows/actionlint.yml/badge.svg)](https://github.com/benrozsa/dotfiles/actions/workflows/actionlint.yml)
 
-Personal configuration files for macOS **and** Linux (tested on Fedora Workstation).  
-Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
+Personal configuration files for macOS **and** Linux.
+Modernized for the **2026 Post-AI era**—designed to streamline setups where you let AI agents do the coding.
 
 ---
 
 ## Features
 
+- **Post-AI Optimization**
+  - **RTK (Rust Token Killer)** integration to reduce command-line output bloat, cutting LLM/Agent token consumption by up to 90%!
+  - `Brewfile` for standardized macOS package setup, instantly bootstrapping essential development & AI CLI utilities.
+  - `CLAUDE.md` and custom instructions (`AGENTS.md`) detailing workspace rules and commands specifically for AI coding agents (e.g., Claude Code, Kilo).
 - **Shell Configuration**
   - `.zshenv` for PATH/env — loaded by every shell, including non-interactive subshells (AI agents, scripts)
   - `.zshrc` for interactive setup — framework-free; plugins cloned directly into `~/.zsh/plugins`
@@ -25,19 +29,21 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
     - global ignore file (`.DS_Store` on macOS, space for Linux ignores too)
     - cross‑platform credential helper (macOS: `osxkeychain`; Linux: `libsecret` if available)
 
-- **Editor Configuration**
+- **Editor & MCP Configuration**
   - `.vimrc` — minimal, no plugins: line numbers, search, indentation, system clipboard, persistent undo, `jk`→Esc
   - `.vscode/settings.json` for consistent VS Code behavior
   - `.vscode/extensions.json` listing recommended extensions
-  - `mcp.json` for workspace/project metadata
+  - `mcp.json` for workspace/project metadata & Model Context Protocol server configuration
 
 - **Setup Script**
   - `install.sh`:
+    - On macOS, automatically runs `brew bundle` with the provided `Brewfile` to install all utilities.
     - Safely symlinks dotfiles into your home directory
     - Backs up existing files as `.bak` before linking
     - Ensures Zsh plugins are installed/updated
     - Runs personal Git setup if `git-config-setup.sh` is present
     - Detects platform for VS Code settings path (macOS vs Linux)
+    - Sets up global auto-rewrite hooks for **RTK** to automatically optimize agent sessions.
 
 ---
 
@@ -46,6 +52,7 @@ Provides a simple, repeatable setup for shell, Git, Vim, and VS Code.
 - **macOS** or **Fedora/Linux**
 - Git
 - Vim
+- Homebrew (recommended for macOS auto-provisioning)
 - [VS Code](https://code.visualstudio.com/) (with CLI `code` available in `$PATH`)
 - Optional tools:
   - shfmt (shell formatter) for on-save formatting in VS Code — install via `brew install shfmt` (macOS) or `sudo dnf install shfmt` (Fedora)
